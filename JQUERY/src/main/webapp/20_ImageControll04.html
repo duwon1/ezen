@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        img{width:600px; height: 400px;}
+        #view{position: relative; width: 600px; height: 400px; margin: 0 auto; border: 1px dashed black; overflow: hidden;}
+        #imgs{position: absolute; width: 4800px; height: 400px; left: 0; top: 0; border: 1px dashed red;}
+        #remote{position:relative; width: 200px; height: 50px; border: 2px solid white; top: 350px; margin: 0 auto; text-align: center; }
+        ul{list-style: none; margin: 0; padding: 0; display: inline-block;}
+        li{float: left; width: 14px; height: 14px; background-color: white; border-radius: 50%; margin: 18px 4px; font-size: 70%; font-weight: bold; line-height: 14px; text-align: center; cursor: default;}
+
+        .selected{background-color: black; color: white; border: 1px solid white;}
+    </style>
+</head>
+<body>
+    <div id="view">
+        <div id="imgs"><img src="images/Koala.jpg"><img src="images/Chrysanthemum.jpg"><img src="images/Desert.jpg"><img src="images/Hydrangeas.jpg"><img src="images/Jellyfish.jpg"><img src="images/Lighthouse.jpg"><img src="images/Penguins.jpg"><img src="images/Tulips.jpg"></div>
+    <div id="remote">
+        <ul>
+            <li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li>
+        </ul>
+    </div>
+    </div>
+
+    <script src="script/jquery-3.6.4.js"></script>
+    <script type="text/javascript">
+        //버튼을 클릭하면 해당이미지의 위치로 animate를 이동해서 imgs를 이동하기
+        //클릭된 번호는 addClass를 이용해서 검은 바탕의 흰글자로 반전시키기
+        //클릭되지 않은 번호는 흰바탕에 검은 글자 유지
+        $(function(){
+            $('li').click(function(){
+                const imgNum=$(this).index();
+                const dist=imgNum*-600;
+                $('#imgs').animate({left:dist},300);
+                $('li').removeClass('selected');
+                $('li').eq(imgNum).addClass('selected');
+            });
+            $('li:first').addClass('selected');
+        }) ;
+    </script>
+</body>
+</html>

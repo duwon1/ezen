@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15_ImageControll03.html</title>
+    <script type="text/javaScript">
+        //이미지를 클릭할때마다 1->2->3->4...이미지 번호가 변하도록 코딩하기
+        //이미지는 10.jpg까지 있으면 10 다음으로 다시 1번이 되게 설정하기
+
+        var imgNum=0;
+        function changeImg() {
+            //이미지를 클릭하면 호출되는 함수
+            //호출될때마다 늘어나는 변수값을 갖고 있으며, 그 변수값이 파일이름을 결정함
+            imgNum++;
+            if(imgNum>10) imgNum=1;
+            document.getElementById("target").src="images/"+imgNum+".jpg";
+        }
+
+    </script>
+</head>
+<body>
+    <img src="images/1.jpg" id="target" onclick="changeImg()">
+</body>
+</html>

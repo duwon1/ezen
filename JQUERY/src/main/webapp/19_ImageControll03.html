@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #view{position: relative; width: 170px; height: 255px; border: 3px solid blue; left: 50px; overflow: hidden;}
+        #imgs{position: absolute; width: 1700px; height: 255px; left: 0px; top: 0; border: 1px dashed red;}
+    </style>
+</head>
+<body>
+
+    <div id="view">
+        <div id="imgs">
+            <img src="images/1.jpg"><img src="images/2.jpg"><img src="images/3.jpg"><img src="images/4.jpg"><img src="images/5.jpg"><img src="images/6.jpg"><img src="images/7.jpg"><img src="images/8.jpg"><img src="images/9.jpg"><img src="images/10.jpg"></div>
+    </div>
+    
+    <script src="script/jquery-3.6.4.js"></script>
+    <script type="text/javascript">
+        //1초에 한칸(170px)씩 이동. animate 이용
+        //마우스가 올라가면 이동을 멈추고, 마우스가 빠지면 이동을 다시 시작하기
+        $(function(){
+            let imgNum=0;
+            let timer;
+            $('#view').hover(
+                function(){
+                    window.clearInterval(timer);
+                },
+                function(){
+                    timer=setInterval(function(){
+                        $('#imgs').animate({left:imgNum*-170 },1000);
+                        imgNum++;
+                        if(imgNum>9) imgNum=0;
+                    },1500);
+                }
+            );
+            $('#view').trigger('mouseleave');
+
+        });
+    </script>
+</body>
+</html>

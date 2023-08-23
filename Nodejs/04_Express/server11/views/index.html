@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Wellcome to {{title}} nunjucks</h1>
+  <!-- 
+    중괄호 2개를 겹쳐서 전달내용을 표현할 수 있음
+   -->
+  <br>
+  <hr>
+  <!-- 내부변수 -->
+  {% set node = 'Node-Js' %}
+  {% set js = "javaScript" %}
+  <h2>{{node}} 와 {{js}}</h2>
+
+  <br>
+  <hr>
+  <!-- 꺽쇠괄호 태그의 적용 유무 -->
+  <h3>{{'<strong>이스케이프</strong>'}}</h3>
+  <h3>{{'<strong>이스케이프 안함</strong>' | safe}}</h3>
+
+  <br>
+  <hr>
+
+  {% set fruits = ['사과', '배', '오렌지'] %} <!-- 배열생성 -->
+  <ul>
+    {% for item in fruits %}
+     <li>{{item}}</li>
+    {% endfor %}
+  </ul>
+
+  <ul>
+    {% for item in fruits %}
+     <li>{{loop.index}} 번째 {{item}}</li>
+    {% endfor %}
+  </ul>
+
+  <br>
+  <hr>
+
+  <!-- 조건문 -->
+  {% set inLogged = true %}
+  {% if isLogged %}
+    <h3>로그인됨</h3>
+  {% else %}
+    <h3>로그인 하세요</h3>
+  {% endif %}
+
+  {% set fruit = 'banana' %}
+  {% if reuit == 'apple' %}
+    <h3>사과</h3>
+  {% elif fruit == 'banana' %}
+    <h3>바나나</h3>
+  {% elif fruit == 'banana' %}
+    <h3>오렌지</h3>
+  {% else %}
+    <h3>모름</h3>
+  {% endif %}
+
+</body>
+</html>

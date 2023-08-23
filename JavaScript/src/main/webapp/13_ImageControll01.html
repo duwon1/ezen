@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>13_ImageControll01.html</title>
+    <script type="text/javaScript">
+        function changeImg3() {
+            //img 태그의 id를 이용해서 access 후 그 속성값을 변경함.
+            document.getElementById("img1").src="images/3.jpg";
+        }
+        function changeImg4() {
+            document.getElementById("img2").src="images/4.jpg";
+            
+        }
+        function changeImg1() {
+            document.getElementById("img1").src="images/1.jpg";
+        }
+        function changeImg2() {
+            document.getElementById("img2").src="images/2.jpg";
+        }
+    </script>
+</head>
+<body>
+    <img src="images/1.jpg" id="img1" onmouseover="changeImg3();"  onmouseout="changeImg1();">
+    <img src="images/2.jpg" id="img2" onmouseover="changeImg4();" onmouseout="changeImg2();">
+
+    <!-- 
+    1.jpg에 마우스를 올리면 3.jpg로 변환, 2.jpg에 마우스를 올리면 4.jpg로 변환
+    2. 마우스가 빠져나가면 다시 원래대로 변환 
+
+    -변환은 자바스크립트 명령으로 변환
+    -함수에 명령을 넣어놓고, img 태그에 마우스이벤트로 함수를 호출하는 방식
+    -onMouseover="":해당 태그에 마우스포인터가 올라가면 일어나는 이벤트
+    -onMouseout="":해당 태그에 마우스포인터가 밖으로 벗어나면 일어나는 이벤트
+
+-->
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_JavaScriptBasic02.html</title>
+    <script type="text/javaScript">
+        // 13.배열
+        // 배열에 저장되는 자료형이 고정되지 않았음. 또한 배열안에 배열을 넣어서 이차원 배열처럼 사용 가능
+        // var array=[273, 'string', true, function () {    }, {a:100, b:20}, [150,170]];
+        // document.write("<h2>"+array[0]+"</h2>");
+        // document.write("<h2>"+array[1]+"</h2>");
+        // document.write("<h2>"+array[2]+"</h2>");
+        // document.write("<h2>"+array[3]+"</h2>");
+        // document.write("<h2>"+array[4]+"</h2>");
+        // document.write("<h2>"+array[5]+"</h2>");
+        // document.write("<h2>"+array[5][0]+"</h2>");
+        // document.write("<h2>"+array[5][1]+"</h2>");
+        // document.write("<h2>"+array+"</h2>");
+
+        // 14.undefined 자료형
+        // 1. 존재하지 않은 것을 표현하려고 했을 때
+        // document.write(variable); //에러-선언되지도 초기화되지도 않은 변수의 사용은 에러
+        // document.write("<h2>"+typeof(variable)+"</h2>"); //undefined
+        
+        // // 2. 변수를 선언(생성)했지만 초기화하지 않았을 때
+        // var variable2
+        // document.write("<h2>"+variable2+"</h2>"); //undefined
+        // document.write("<h2>"+typeof(variable2)+"</h2>"); //undefined
+        
+        // // 3. undefined가 아닌 경우 -> 변수 생성없이 바로 값을 대입한 경우
+        // variable3=100;
+        // document.write("<h2>"+variable3+"</h2>"); //undefined
+        // document.write("<h2>"+typeof(variable3)+"</h2>"); //undefined
+
+        //15. 숫자와 문자열(아라비아기호)의 특별한 연산과 자료형 변환
+
+        //1. +연산자: 숫자끼리 연산을 제외한 연산은 모두 이어붙이기
+        // ducument.write("<h2>52+273= "+(52+273)+"</h2>"); //325 숫자+숫자
+        // ducument.write("<h2>'52'+273= "+('52'+273)+"</h2>"); //52273 문자+숫자
+        // ducument.write("<h2>52+'273'= "+(52+'273')+"</h2>"); //52273 숫자+문자
+        // ducument.write("<h2>'52'+'273'= "+('52'+'273')+"</h2>"); //52273 문자+문자
+        // //연산의 순서상 '12'+52가 먼저 계산되고, 결과 '1252'가 '273'과 이어붙이기 되어 결과는'1252273'
+        // ducument.write("<h2>'12'+52+273= "+('12'+52+273)+"</h2>"); //1252273 
+        // //12+273 산술 연산 후 '12'와 이어붙이기 연산
+        // ducument.write("<h2>52+273+'12'= "+(52+273+'12')+"</h2>"); //32512 
+
+
+        //2. 덧셈을 제외한 사칙 연산 : 문자가 숫자로 변환되어 "산술연산" 실행
+        // document.write("<h2>'52'*2="+('52'*2)+"</h2>"); //104        
+        // document.write("<h2>'52'-2="+('52'-2)+"</h2>"); //104        
+        // document.write("<h2>'52'/2="+('52'/2)+"</h2>"); //104        
+        // document.write("<h2>'52'%2="+('52'%2)+"</h2>"); //104        
+        // document.write("<h2>'홍길동'-2 = "+('홍길동'-2)+"</h2>"); //nan
+
+        //3. 강제 자료형 변환
+        //-다른 자료형->숫자변환:Number() 함수 사용
+        //-다른 자료형->문자열 변환:String() 함수 사용
+        // var input = prompt('숫자를 입력하세요', '숫자');
+        // var num=Number(input);
+        // document.write("<h2>typeof(input)=>"+typeof(input)+':'+num+" / typeof(num)=>"+typeof(num)+"</h2>");
+        // //숫자가 아닌 값 입력시 -NaN 출력 : 자바스크립트로 나타낼 수 없는 숫자 의미
+        
+        // var str= String(12.123);
+        // document.write("<h2>str:Number->string:"+str+" / typeof(str)=>"+typeof(str)+123"</h2>");
+
+        //4. Boolean() 자료형 변환
+        // document.write('<h2>Boolean(0)->'+Boolean(0)+"</h2>"); //0은 boolean으로 변환시 false, 0이 아닌 모든 숫자는 true
+        // document.write('<h2>Boolean(NaN)->'+Boolean(NaN)+"</h2>"); //false
+        
+        // document.write('<h2>Boolean(\'0\')->'+Boolean('0')+"</h2>"); //true ->따옴표안에 그 어떤 글자라도 존재한다면 true, 비어있거나 null , NaN 혹은 undefined라면 false
+        // document.write('<h2>Boolean(\'false\')->'+Boolean('false')+"</h2>"); //true
+        
+        // document.write('<h2>Boolean(\'\')->'+Boolean('')+"</h2>"); //false
+        // document.write('<h2>Boolean(null)->'+Boolean(null)+"</h2>"); //false
+        // document.write('<h2>Boolean(undefined)->'+Boolean(undefined)+"</h2>"); //false
+
+        // 16.일치 연산자
+        // 양변의 자료형은 틀리지만 자료형을 맞춰서 변환했을 때 변환된 값이 같음
+        // ==:일치 true
+        // !=:불일치 true
+        // document.write('\'\'==false-> ' +(''==false)+"<br>"); //true
+        // document.write('\'\'==0-> ' +(''==0)+"<br>"); //true
+        // document.write('0==false-> ' +(0==false)+"<br>"); //true
+        // document.write('273==\'273\'-> ' +(273=='273')+"<br>"); //true
+        // //=== :양변의 자료형과 값이 모두 일치
+        // //!== : 양변의 자료형과 값이 다름.
+        // document.write('\'\'===false-> ' +(''===false)+"<br>"); //false
+        // document.write('\'\'===0-> ' +(''===0)+"<br>"); //false
+        // document.write('0===false-> ' +(0===false)+"<br>"); //false
+        // document.write('273===\'273\'-> ' +(273==='273')+"<br>");//false
+        // var str="홍길동";
+        // document.write('"홍길동"==="홍길동"=>'+(str==="홍길동")+"<br>"); //true
+        
+        
+
+        </script>
+</head>
+<body>
+    
+</body>
+</html>

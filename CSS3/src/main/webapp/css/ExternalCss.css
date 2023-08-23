@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+/*ExternalCss.css */
+div{height:90px; line-height:90px; text-align:center; border:1px solid black; font-size:200%;
+font-weight:bold; width:600px; 
+
+background: #30d4f4;
+background: -moz-linear-gradient(left,  #30d4f4 0%, #d62828 42%, #cddb76 100%); 
+background: -webkit-linear-gradient(left,  #30d4f4 0%,#d62828 42%,#cddb76 100%); 
+background: linear-gradient(to right,  #30d4f4 0%,#d62828 42%,#cddb76 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30d4f4', endColorstr='#cddb76',GradientType=1 ); 
+}

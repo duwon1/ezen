@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- 
+이벤트 선택자(selector)
+-종류: 
+	- :hover -> 해당 태그에 마우스 포인터가 올라갔을 때
+	- :active -> 해당 태그 위에서 마우스 버튼이 눌렸을 때
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>09_Hover.html</title>
+<style type="text/css">
+	#box1{background:yellow; height:50px; width:800px; transition-duration: 1s;}
+	#box2{background:yellow; height:50px; width:800px; transition-duration: 1s;}
+	
+	#box1:hover{ background: pink; color: white; }
+	#box2:hover{ background: darkgreen; color: white; }
+	
+	#box1:active{background: darkgreen; height:150px;}
+	#box2:active{background: pink; height:150px;}
+	
+	#box1:active+#box2{background:green; color:white;}
+	/* 
+	하나의 반응선택자가 변경하는 사항을 다른 선택자에 적용하려면
+	"자신의 형제나 후손 선택자에게만" 적용이 가능. 자신의 부모나 부모의 형제 또는 부모의 형제의 자손은 적용 불가
+	그들에게 적용하려면 제이쿼리 또는 자바스크립트 사용해야 함 */
+</style>
+</head>
+<body>
+<div id="box1">
+	<h1>User Action Selector</h1>
+</div>
+<div id="box2">
+	<h1>User Action Selector</h1>
+</div>
+
+</body>
+</html>

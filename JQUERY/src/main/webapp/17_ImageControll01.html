@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <img src="images/1.jpg">
+    <img src="images/2.jpg">
+    
+    <script src="script/jquery-3.6.4.js"></script>
+    <script type="text/javascript">
+        //각 이미지에 마우스가 올라가면 이미지를 다음과 같이 변경하기
+        //1<->3     2<->4
+        //mouseenter, mouseout 또는 hover
+        //이미지 문서 객체의 속성을 변경
+        $(function(){
+            $('img:first').hover(
+                function(){$(this).attr('src', 'images/3.jpg')},
+                function(){$(this).attr('src', 'images/1.jpg')}
+            );
+            $('img:last').hover(
+                function(){$(this).attr('src', 'images/4.jpg')},
+                function(){$(this).attr('src', 'images/2.jpg')}
+            );
+        });
+    </script>   
+</body>
+</html>

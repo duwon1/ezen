@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>17_ImageControll05.html</title>
+    <script type="text/javaScript">
+        //1초에 한번씩 이미지를 교체하는 setInterval 을 설정
+        //이미지에 마우스를 올리면 setInterval을 멈춤
+        //이미지위에 마우스가 빠져나가면 setInterval 다시 시작
+        var imgNum=0;
+        var timer;
+
+            function stop() {
+                //setInterval의 멈춤
+                window.clearInterval(timer);
+            }
+
+            function resume() {
+                //setInterval 시작/재시작
+                //timer변수가 setInterval의 참조값을 저장해서 컨트롤하는데 사용됨
+            timer=  window.setInterval(function () {
+                imgNum++;
+                if(imgNum>10) imgNum=1;
+                document.getElementById("target").src="images/"+imgNum+".jpg";
+            }, 1000);
+        }
+    </script>
+</head>
+<body onLoad="start();">
+    <img src="images/1.jpg" id="target"  onmouseover="stop()" onmouseout="resume()">
+
+</body>
+</html>

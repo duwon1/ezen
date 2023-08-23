@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javaScript">
+        /*
+        Function
+        -자바의 메서드와 같은 뜻의 문법요소
+        -반복 되거나 단위로 구성될 명령을 하나의 이름으로 묶어놓고 , 명령이 필요할 때 이름을 불러 실행하는 구조
+        -보통 head 태그안의 스크립터 영역에서 함수를 정의해 놓고, body의 이벤트에 연결해 실행시킴. 버튼이 클릭되면 실행되는 자바스크립트 함수의 정의
+        -함수는 선언적 함수와 익명함수가 있음
+        -선언적 함수는 생성(정의)할 때, 호출할 이름을 부여해 만드는 함수
+        -익명 함수는 이름을 지정하지 않은 상태로 만들어 함수자체를 변수에 저장해 변수이름으로 사용하는 함수를 의미함
+        */
+
+        //선언적 함수
+        function move() {
+            var output=Number(prompt('숫자를 입력하세요','숫자'));
+            document.write("입력한 숫자는 "+output);
+        }//함수는 익명 함수이든 선언적 함수이든 head영역의 script 태그 안에서 또는 body영역의 script 태그 안에서 어디서든 호출 할 수 있음
+        
+        //익명함수
+        //-하나의 변수에 익명함수를 대입하고, 필요할 때마다 변수이름으로 실행할 수 있다는 장점이 있음
+        //- 이미 함수가 대입되어 있는 변수에 다른 함수를 대입해 다른 함수가 실행되게 할 수도 있음
+        var func1= function () {
+            var output=Number(prompt('숫자를 입력하세요','숫자'));
+            document.write("입력한 숫자는 "+output);
+        }
+
+        func1=function () {
+            document.write("안녕하세요 방갑습니다.");
+        }
+    // 익명함수를 저장한 변수는 저장된 함수의 몸체를 대신하지만 변수에 괄호를 붙이면 함수가 실행되는 모드로 변경됨. 
+    // 함수의 정의 영역 및 몸체를 변수에 저장해 변수의 이름으로 호출하는 형태. 
+    // 변수는 일시적으로 하나의 함수만 저장할 수 있으며, 변수의 이름으로 함수를 호출할 시 현재 저장되어 있는 함수가 실행됨
+    </script>
+</head>
+<body>
+<!-- <body onLoad="func1()"> -->
+    <!-- <script type="text/javaScript">
+        // move();
+        func1();
+    </script> -->
+    <input type="button" value="CLICK" onclick="func1()">
+    <!-- head에 정의된 함수가 버튼 또는 윈도우 이벤트에 연결되어져서 실행될 수 있음 -->
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>16_ImageControll04.html</title>
+    <script type="text/javaScript">
+        //1초에 한번씩 다음 이미지로 바뀌게 코딩. 그림은 1.jpg~10.jpg
+        var imgNum=0;
+        setInterval(function() {
+            imgNum++;
+            if(imgNum>10) imgNum=1;
+            document.getElementById("target").src="images/"+imgNum+".jpg";
+        }, 1000);
+    </script>
+</head>
+<body>
+        <img src="images/1.jpg" id="target" >
+
+</body>
+</html>

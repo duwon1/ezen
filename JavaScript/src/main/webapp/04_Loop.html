@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javaScript">
+        //1. while 반복문
+        //예제1. 반복실행 while문
+        // var value=1;
+        // var s="";
+        // while(value<5){
+        //     document.write("<h2>"+value+'번째 반복</h2>');
+        //     s=s+value+"번째 반복&nbsp;&nbsp;&nbsp;";
+        //     value++;
+        // }
+        // document.write("<h2>"+s+"</h2>");
+
+        //예제2
+        // var value=0;
+        // var startTime=new Date().getTime(); //오늘 날짜 현재시간의 밀리초 환산값
+        // document.write("<h2>"+startTime+"</h2>");
+        // endTime= startTime+1000; //1000밀리초=1초
+        // while(new Date().getTime()<endTime){
+        //     //반복실행동안 현재시간의 밀리초를 얻어내고 최초시간 +1초의 시간과 계속 비교하여 반복
+        //     value++;
+        // }
+        // //1초 동안 ++연산이 몇번이나 실행되는지 value변수에 저장됨
+        // document.write("<h2>시작시간: "+startTime+"<br>종료시간(시작시간+1초): "+endTime+"<br>반복횟수:"+value+"</h2>");
+
+        //2. do~while 반복문
+        // var value=10;
+        // do{
+        //     document.write("<h2>"+value+'번째 반복.</h2>');
+        //     value++;
+        // }while(value<=5);
+        // //반복실행문 조건이 처음부터 false가 되어도 한번은 실행하는 특징이 있음.
+        
+        //3. for 반복문
+        var array=['포도', '사과', '바나나', '망고'];
+        for(var i=0; i<array.length; i++){
+            document.write(array[i]);
+        }
+
+        //4. for in 반복문
+        // for(var k:array){
+        //     document.write(k);
+        // } //이방법은 자바에서 사용하던 방법
+        for(var i in array){
+            document.write(array[i]);
+        }//배열의 값이 전달되지 않고, 배열의 인덱스(첨자)들이 전달됨
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

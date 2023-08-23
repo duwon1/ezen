@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>07_Descendant03.html</title>
+<style type="text/css">
+	/* th{color:red;}  : 테이블이 하나고 하나의 지정테이블의 th에 글자색을 빨강으로 하고 싶을땐 못함*/
+	/* #table1>tr>th{color:red;}  : 이렇게 하면 적용이 안됨 왜냐면 table과 tr 사이에 tbody가 숨어져 있기 때문*/
+	#table1>tbody>tr>th{color:navy;}
+</style>
+</head>
+<body>
+
+<table border="1" width="300" id="table1">
+	<tr>
+		<th>name</th>
+		<th>address</th>
+	</tr>
+	<tr>
+		<td>John</td>
+		<td>Seoul Jongno</td>
+	</tr>
+	<tr>
+		<td>Mary</td>
+		<td>Seoul Gangnam</td>
+	</tr>
+</table>
+</body>
+</html>

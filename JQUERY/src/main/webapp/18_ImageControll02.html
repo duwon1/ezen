@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<img src="images/1.jpg">
+
+
+
+    <script src="script/jquery-3.6.4.js"></script>
+    <script type="text/javascript">
+//이미지를 클릭하면 1->2 2->3 ...10이미지까지 변경되도록 코딩하기
+      //10번 이미지에 다다랐을 때 다시 1번으로 시작
+    //   $(function(){
+    //         let idx=0;
+    //         $('img').click(function(){
+    //             idx++;
+    //             if(idx>10) idx=1;
+    //             $('img').attr('src','images/'+idx+'.jpg');
+                
+    //         });
+    //     });
+
+    //setInterval을 이용해서 1초에 하나씩 변경되도록 하기
+    // $(function(){
+    //     let idx=0;
+
+    //     setInterval(function(){
+    //             idx++;
+    //             if(idx>10) idx=1;
+    //             $('img').attr('src','images/'+idx+'.jpg');
+           
+    //     }, 1000);
+    // });
+
+    //1초에 한번씩 이미지가 변경되도록 하고, 마우스가 이미지에 올라가면 변경 멈춤
+    //마우스가 다시 빠져나가면 변경 다시시작
+    // $(function(){
+    //     let idx=0;
+    //     let timer;
+    // $('img').mouseout(function(){
+
+    //     timer=setInterval(function(){
+    //         idx++;
+    //         if(idx>10) idx=1;
+    //         $('img').attr('src','images/'+idx+'.jpg');
+    //     }, 1000);
+    // });
+    // $('img').mouseover(function(){
+    //     clearInterval(timer);
+    // })
+    // $('img').trigger('mouseout',function(){});
+    // })
+
+    //hover 버전
+    $(function(){
+        var imgNum=0;
+        var timer;
+        $('img').hover(
+            function(){ //mouseenter
+                window.clearInterval(timer);
+            },
+            function(){ //mouseleave
+                timer= setInterval(function(){
+                    imgNum++;
+                    if(imgNum>10) imgNum=1;
+                    $('img').attr('src','images/'+imgNum+'.jpg');
+                },1000);
+            }
+        );
+        $('img').trigger('mouseleave');
+    })
+    </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- 코딩으로 셀을 합치는 방법
+1. 합치고자 하는 셀들의 td태그를 골라냄
+2. 골라낸 셀들 중 가장 왼쪽, 가장 위에 있는 셀의 td만 남기고 나머지 td를 삭제함
+3. 행으로 몇개가 삭제되고, 열로 봤을 때 몇 개의 열이 삭제 됐는지 파악
+4. 삭제된 행의 개수+1만큼 남아 있는 셀의 속성으로 rowspan값을 설정
+5. 삭제된 열의 개수+1만큼 남아 있는 셀의 속성으로 colspan값을 설정
+6. 삭제되지 않고 남아 있는 셀이 없어진 셀의 역할까지 한다는 의미의 속성값  -->
+
+<table border="0" width = "600" align="center" cell="5" bgcolor="green">
+	<tr bgcolor="white" align="center" height="100">
+		<td colspan="2">1C 1R</td>
+		<td>1C 3R</td>
+		<td>1C 4R</td>
+		<td>1C 5R</td>
+	</tr>
+	<tr bgcolor="white" align="center" height="100">
+		<td rowspan="3">2C 1R</td>
+		<td>2C 2R</td>
+		<td>2C 3R</td>
+		<td>2C 4R</td>
+		<td>2C 5R</td>
+	</tr>
+	<tr bgcolor="white" align="center" height="100">
+		<td>3C 2R</td>
+		<td>3C 3R</td>
+		<td>3C 4R</td>
+		<td>3C 5R</td>
+	</tr>
+	<tr bgcolor="white" align="center" height="100">
+		<td rowspan="2" colspan="3">4C 2R</td>
+		<td>4C 5R</td>
+	</tr>
+	<tr bgcolor="white" align="center" height="100">
+		<td>5C 1R</td>
+		<td>5C 5R</td> 
+	</tr>
+</table>
+
+</body>
+</html>

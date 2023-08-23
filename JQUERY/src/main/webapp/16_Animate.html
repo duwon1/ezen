@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        div{width: 50px; height: 50px; margin: 3px; background-color: orange; position: relative;}
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    
+
+
+    <script src="script/jquery-3.6.4.js"></script>
+    <script type="text/javascript">
+        //각 div에 마우스가 올라가면 현재위치에서 left 값을 500으로 설정해 오른쪽으로 이동. 마우스가 빠져나가면 제자리로 돌아옴
+        //$(선택자).animate({속성명, 값}, 애니메이스 실행시간)
+        $(function(){
+            // $('div').mouseenter(function(){
+            //     $(this).animate({left:500},1000);
+            // });
+            // $('div').mouseleave(function(){
+            //     $(this).animate({left:0},1000);
+            // });
+
+            $('div').hover( //mouseenter와 mouseout 동시 이벤트
+                function(){$(this).animate({left:500},1000);},
+                function(){$(this).animate({left:0},1000);},
+            );
+            //$(this).css('left','500px');는 자체적 transition-duration이 없음
+        });
+
+    </script>
+</body>
+</html>

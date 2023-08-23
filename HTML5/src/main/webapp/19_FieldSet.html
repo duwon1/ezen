@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>19_FieldSet.html</title>
+</head>
+<body>
+
+<form>
+	<!-- fieldset  많이 사용되는 곳 : 회원가입 화면에서, 필수입력사항들의그룹과 일반 입력사항의 그룹의 경계를 나타낼 때 
+	하나의 form안에서 영역을 나누고 싶을때도 주로 씀 -->
+	<fieldset>
+		<legend>login</legend>
+		<table>
+			<tr>
+			<td><label for="id">아이디</label></td>
+			<td><input type="text" id="id"/></td>
+			</tr>
+			<tr>
+			<td><label for="pwd">비밀번호</label></td>
+			<td><input type="password" id="pwd"/></td>
+			</tr>
+		</table>
+	<input type="submit" value="login"/>
+	</fieldset>
+</form>
+
+</body>
+</html>

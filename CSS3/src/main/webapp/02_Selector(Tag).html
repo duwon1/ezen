@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+*CSS 선택자(selector) 기본
+-특정한 HTML 태그 또는 ID 또는 CLASS를 선택할 때 사용하는 기능.
+-선택된 해당 태그에 우리가 원하는 스타일 또는 기능을 적용할 수 있음  -->
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>02_Selector(Tag).html</title>
+<!-- Tag 선택작 : Tag 이름을 직접 지정해서 css적용 -->
+<style type="text/css">
+/* 모든 h1태그에 글자색 빨간색으로 */
+	h1{color:#FF0000;} /* color:글자색 */
+	
+/* 모든 h3태그에 글자색 파란색으로 */
+	h3{color:#0000FF;}
+/* 모든 p태그에 글자색 노란색*/
+	p{background:yellow;}
+/* 모든 h1,h3태그에 배경색 은색*/
+	h1,h3{background:silver;}	/* 컴마를 사용해서 동시 두개의 태그를 선택할 수도 잇음 */
+	/* 모든 img 태그에 가로크기 100px, 텍스트와 수직정렬 중간으로 맞춤 */
+	img{width:100px; vertical-align:middle;}
+	/* vertical-align : 이미지와 글자간의 수평 맞춤 속성. top:위쪽 맞춤 bottom:아래쪽 맞춤 midle:중간 맞춤 */
+</style>
+</head>
+<body>
+
+<h1>CSS Selector Basic</h1>
+<h3>간세네 관련 포스팅 : 한글 Lorem Ipsum 생성기</h3>
+<p>국가안전보장에 관련되는 대외정책·군사정책과 국내정책의 수립에 관하여 국무회의의
+심의에 앞서 대통령의 자문에 응하기 위하여 국가안전보장회의를 둔다. 모든 국민의 재산권은 보장된다. 
+그 내용과 한계는 법률로 정한다. 대법원장과 대법관이 아닌 법관의 임기는 10년으로 하며, 법률이 정하는 바에 
+의하여 연임할 수 있다. 국회는 의장 1인과 부의장 2인을 선출한다. 모든 국민은 고문을 받지 아니하며, 
+형사상 자기에게 불리한 진술을 강요당하지 아니한다. 모든 국민은 보건에 관하여 국가의 보호를 받는다.
+ 국민경제자문회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다. 대통령은 제3항과 제4항의 사유를 지체없이 공포하여야 한다.</p><br>
+ <h1>★각 포털 사이트 로고</h1>
+ 다음<img src="images/daumlogo.png">&nbsp;&nbsp;&nbsp;&nbsp;
+ 네이버<img src="images/naver.png">&nbsp;&nbsp;&nbsp;&nbsp;
+ 네이트<img src="images/nate.png">&nbsp;&nbsp;&nbsp;&nbsp;
+</body>
+</html>

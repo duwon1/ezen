@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        img{width:600px; height: 400px;}
+        #view{position: relative; width: 600px; height: 400px; margin: 0 auto; border: 1px dashed black; overflow: hidden;}
+        #imgs{position: absolute; width: 4800px; height: 400px; left: 0; top: 0; border: 1px dashed red;}
+        #remote{position:relative; width: 250px; height: 50px; border: 2px solid white; margin: 0 auto; top: 350px; text-align: center;}
+        #btn{position: relative; margin: auto; width: 50px; height: 50px; border-radius: 50%; border: 1px solid black; background-color: white; font-size: 150%; line-height: 50px; cursor: pointer;}
+    </style>
+</head>
+<body>
+    <div id="view">
+        <div id="imgs"><img src="images/Koala.jpg"><img src="images/Chrysanthemum.jpg"><img src="images/Desert.jpg"><img src="images/Hydrangeas.jpg"><img src="images/Jellyfish.jpg"><img src="images/Lighthouse.jpg"><img src="images/Penguins.jpg"><img src="images/Tulips.jpg"></div>
+        <div id="remote">
+            <div id="btn">▶</div>
+        </div>
+
+    <script src="script/jquery-3.6.4.js"></script>
+    <script type="text/javascript">
+        //버튼을 remote 정중앙에 위치시키고, 한번 클릭하면 자동이동, 또 한번 클릭하면 이동멈춤으로 버튼의 기능을 코딩하기
+        $(function(){
+            let imgNum=0;
+            let timer;
+            $('#btn').click(function(){
+                const play= $('#btn').text();
+                if(flag==false){
+                    flag=true;
+                        $('#btn').html('■');
+                        timer=setInterval(function(){
+                            imgNum++;
+                            if(imgNum>7) imgNum=0;
+                            $('#imgs').animate({left:imgNum*-600},800);
+                        },1000);
+                }else{
+                    flag=false;
+                    $('#btn').html('▶');
+                    window.clearInterval(timer);
+        
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>

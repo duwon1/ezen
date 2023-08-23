@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input {
+      display: block;
+    }
+  </style>
+  <script src="https://unpkg.com/axios@0.25.0/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <form action="" id="form" method="post" enctype="multipart/form-data">
+    <table border="1">
+      <tr>
+        <td>제목</td>
+        <td><input type="text" name="title"></td>
+      </tr>
+      <tr>
+        <td>설명</td>
+        <td><input type="text" name="description"></td>
+      </tr>
+      <tr>
+        <td>가격</td>
+        <td><input type="text" name="price"></td>
+      </tr>
+      <tr>
+        <td>이미지</td>
+        <td><input type="file" name="image"></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="submit" value="전송"></td>
+      </tr>
+    </table>
+  </form>
+  <table border="1">
+    <tr>
+      <td>제목</td>
+      <td>
+        <div id="title">&nbsp;</div>
+      </td>
+    </tr>
+    <tr>
+      <td>설명</td>
+      <td id="description">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>가격</td>
+      <td id="price">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>이미지</td>
+      <td>
+        <div id="img">&nbsp;</div>
+      </td>
+    </tr>
+  </table>
+  <!-- 
+    1. 서버가 시작되면 첫페이지로 현재 파일이 화면에 표시되도록 해주세요
+    2. 위쪽테이블의 내용을 이용하여 파일을 업로드하고, 다시 돌아와서 아래쪽 표에 입력한 내용을 div 에 넣으세요
+    image div는 가로크기 400의 이미지를 넣으세요
+    3. 위쪽테이블의 입력란은 비우세요
+   -->
+  <script>
+    document.getElementById('form').addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const formData = new FormData()
+      formData.append('title', e.target.title.value)
+      formData.append('image', e.target.image.files[0])
+      formData.append('price',e.target.price.value)
+      formData.append('description', e.target.description.value)
+
+      try {
+        const result = await axios.post('/upload', formData)
+        document.getElementById('title').innerHTML = result.data.title
+        document.getElementById('description').innerHTML = result.data.description
+        document.getElementById('price').innerHTML = result.data.price
+        document.getElementById('img').innerHTML = `<img src="${result.data.filename}" width=400>`
+      } catch (e) { }
+      e.target.image.value = ''
+      e.target.title.value = ''
+      e.target.price.value = ''
+      e.target.description.value = ''
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/board.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        #boardnum,
+        #readCount,
+        #writer,
+        #created_at {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <h2>{{loginUser.userid}} ({{loginUser.name}})님 어서오세요</h2>
+        <input type="button" value="회원정보수정" onclick="location.href='/members/updateForm/{{loginUser.userid}}'">
+        <input type="button" value="로그아웃" onclick="location.href='/members/logout'">
+    </div>
+</body>
+</html>

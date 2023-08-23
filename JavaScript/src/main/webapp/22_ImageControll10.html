@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>22_ImageControll10.html</title>
+    <style type="text/css">
+        ul{list-style: none; margin: 0px; padding: 0px;}
+        ul li{position: relative; float: left; padding: 0px; margin: 10px; overflow: hidden;}
+        .caption{position: absolute; top: 200px; width: 300px; height: 200px; background-color: black; opacity: 0.7; transition: 0.5s;}
+        .caption h1, .caption p{color: white; text-align: center;}
+    </style>
+    <script type="text/javaScript">
+        function up(i) {
+            document.getElementById("cap"+i).style.webkitTransform="translateY(-200px)";
+        }
+        function down(i) {
+            document.getElementById("cap"+i).style.webkitTransform="translateY(200px)";
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li onmouseover="up(1);" onmouseout="down(1);">
+            <img src="images/prod1.jpg">
+            <div class="caption" id="cap1">
+                <h1>상품1</h1>
+                <p>상품1:설명텍스트</p>
+                <p>가격:12,345원</p>
+            </div>
+        </li>
+        <li onmouseover="up(2);" onmouseout="down(2);">
+            <img src="images/prod2.jpg">
+            <div class="caption" id="cap2">
+                <h1>상품2</h1>
+                <p>상품2:설명텍스트</p>
+                <p>가격:12,345원</p>
+            </div>
+        </li>
+        <li onmouseover="up(3);" onmouseout="down(3);">
+            <img src="images/prod3.jpg">
+            <div class="caption" id="cap3">
+                <h1>상품3</h1>
+                <p>상품3:설명텍스트</p>
+                <p>가격:12,345원</p>
+            </div>
+        </li>
+    </ul>
+</body>
+</html>

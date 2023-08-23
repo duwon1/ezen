@@ -1,0 +1,25 @@
+1687827288770	Delete element
+1687827342698	Copy package
+1687827354933	Delete element
+1687828365626	Move 'admin' to 'static'
+1687828369309	Move 'css' to 'static'
+1687828371152	Move 'images' to 'static'
+1687828372872	Move 'product_images' to 'static'
+1687828378715	Move 'script' to 'static'
+1687828385931	Delete element
+1687828405443	Delete element
+1687828434947	Copy folder
+1687828442411	Delete element
+1687828456021	Move 'admin' to 'views'
+1687828457517	Move 'error' to 'admin'
+1687828464479	Move 'include' to 'views'
+1687828466415	Move 'member' to 'views'
+1687828467731	Move 'mypage' to 'views'
+1687828469509	Move 'product' to 'views'
+1687828470934	Move 'qna' to 'views'
+1687828472530	Move 'index.jsp' to 'views'
+1687828476469	Delete element
+1687829235049	Rename resource 'index.jsp'
+1687831613538	Rename type 'IMemberdao'
+1687833048386	Rename compilation unit 'SpringBootG17Application.java'
+1687839420651	Rename resource '따봉도치.jpg'

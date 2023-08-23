@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>22_Color.html</title>
+</head>
+<body>
+
+<!-- 
+색상단위
+1. 키워드를 사용한 색상 적용 : red, orange, blue, black, white, magenta, green, yellow
+	키워드 색깔의 종류 : https://www.w3schools.com/colors/colors_names.asp
+
+2. RGB색상단위
+. rgb(red, green, blue)->(0x00~0xFF-16진수)0~255
+.rgba(..., alpha)->alpha(투명도 : 0.0(완전투명)~1.0(완전불투명))
+
+3. Hex코드 색상 단위 : #000000(검은색) #FFFFFF(white) #FF0000(red) #00FF00(green) #0000FF(Blue) #FF00FF(magenta)
+
+4.HSL 색상단위 : hsl(hue(색상), satuation(채도), lightness(명도))
+.hsla(... , alpha) -기존 hsl에 투명도 추가
+
+* http://www.colorpicker.com
+ -->
+
+<h1 style="background : rgb(0,255,255);"> Header-1</h1>
+<h1 style="background : rgba(241,14,33,0.5);"> Header-2</h1>
+<h1 style="background : #F0F622; opacity:0.5"> Header-3</h1>
+<h1 style="background : hsl(111,91%,38%)">Header-4</h1>
+<h1 style="background : hsla(111,91%,38%, 0.5)">Header-5</h1>
+
+</body>
+</html>

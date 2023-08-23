@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14_ImageControll02.html</title>
+<script type="text/javaScript">
+    //그림을 클릭하면 숫자하나를 입력받아서 "숫자.jgp" 파일로 그림을 바꾸는 코드를 완성하기
+    function changeImg() {
+            // document.getElementById("img1").src="images/3.jpg";
+            //앞선 코드에서 파일이름을 변경하는 명령 -파일 경로와 이름이 string데이터라는 점을 감안해서 작성하기
+        var number= prompt("숫자를 입력하세요(1~10)", "1");
+        // var filename="images/"+number+".jpg";
+        document.getElementById("target").src="images/"+number+".jpg";
+        }
+</script>
+</head>
+<body>
+    <img src="images/1.jpg" id="target" onclick="changeImg()">
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<!--
+*CSS(cascading style sheets)
+- Tag 안에서 지정되던 옵션을 포함, 다양한 옵션과 꾸밈요소를 별도의 시트에 작성 후 name, id등으로 연결적용하는 스타일 정의 구문  -->
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>01_First.html</title>
+<style type="text/css">
+	#div2{
+		width:300px; height:200px;
+		background:green;
+		margin:20px;
+	}
+	/* width:가로크기, height:세로크기, background:배경색, margin:바깥여백-다른 태그와의 간격 */
+	/* Ctrl+Shift+/ 하면 주석문 처리 */
+	
+	#div3{width:500px; height:200px; background:magenta;	}
+</style>
+</head>
+<body>
+<!-- 스타일을 지정하는 방법 #1 : 태그안에 style 속성을 추가하고 그 값으로 각 스타일들을 한번에 지정함 -->
+<div style="width:150px; height:150px; background:#0A4EFA;"></div>
+<!-- 스타일 속성으로 width height 등과 같은 내용을 표시할 때는 (:)과 함께 반드시 px단위를 붙여야 함 -->
+
+<!-- 다른 스타일과 다르게 width와 height는 태그의 별도 속성으로도, 스타일 속성으로도 표기 가능 -->
+<img src="images/hrd.png" width="100" height="100" border="1"/><br>
+<img src="images/hrd.png" 
+style="width:100px; height:100px; border:3px dashed red"/>
+
+<!-- 스타일을 지정하는 방법 #2 : 적용할 태그에 id또는 class를 지정하고 그 이름을 이용해 별도의 공간에 스타일 지정 -->
+<div id="div2"></div>
+<div id="div3"></div>
+<div id="div3" style="width:100px; height:100px; background:magenta; margin:20px"></div>
+<!-- style 태그의 그 css를 적용한 곳에 style 속성을 추가로 지정하면 속성에 있는 내용이 나중에 적용되므로 
+최종적으로 속성에 지정한 내용이 적용됨. 단, 중복된 내용은 속성에 지정한 css로 적용되고 중복되지 않은 내용들은 동시적용됨.
+-->
+<div id="div2"></div>
+<!-- 하나의 css를 만들어두면 같은 이름으로 여러 태그에 css가 똑같이 적용됨 -->
+</body>
+</html>

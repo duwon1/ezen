@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>18_ImageControll06.html</title>
+    <style type="text/css">
+        #a1{position: absolute; width: 170px; height: 255px; border: 2px solid black; top: 100px; left: 100px;}
+    </style>
+    <script type="text/javaScript">
+
+        //이미지에 마우스를 올리면 반시계방향으로, 마우스가 빠져나가면 다시 시계방향으로 돌아가게 코딩
+        var aa=0;
+        var timer1, timer2;
+        function clockwise() {
+            window.clearInterval(timer2);
+            timer1 =window.setInterval(function() {
+                aa+=20;
+                //회전명령
+                document.getElementById("a1").style.webkitTransform='rotate('+aa+'deg)';
+            }, 500);
+            
+        }
+        function counterClockwise() {
+            window.clearInterval(timer1);
+            timer2=window.setInterval(function () {
+                aa-=20;
+                //회전명령
+                document.getElementById("a1").style.webkitTransform='rotate('+aa+'deg)';
+            }, 500);
+            
+        }
+    </script>
+</head>
+<body onload="clockwise();">
+    <div id="a1">
+        <img src="images/1.jpg" onmouseover="counterClockwise()" onmouseout="clockwise()">
+    </div>
+</body>
+</html>

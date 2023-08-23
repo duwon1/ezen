@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javaScript">
+        //1. if 조건문
+        var date= new Date();
+        //자바 스크립트의 내장 라이브러리 중 날짜객체를 생성하는 명령. 자바스크립트에도 자바와 같이 활용할 주요 내장클래스들이 존재함.
+        //새로운 객체를 생성하기 위해 new는 명령과 함께 객체를 생성해서 사용함
+
+        //자바 스크립트의 if문의 사용은 자바에서의 사용과 똑같음
+        var hour=date.getHours();
+
+        if(hour<11){
+            document.write("<h2>"+hour+'시: 아침 먹을 시간입니다.</h2>');
+        }else if(hour<15){
+            document.write("<h2>"+hour+'시: 점심 먹을 시간입니다.</h2>');
+        }else{
+            document.write("<h2>"+hour+'시: 저녁 먹을 시간입니다.</h2>');
+        }
+
+        //var year=date.getYear();
+        // document.write(year+"년");
+        // getYear()함수는 원래 년도에서 1900년을 뺀 값을 리턴함
+        // getYear()함수는 웹 표준에서 제거(Deprecated) 되었음
+        // getFullYear()로 대체 되어 사용중
+        var year=date.getFullYear();
+        document.write("<h2>"+year+"년</h2>");
+        var month = date.getMonth();
+        document.write("<h2>"+(month+1)+"월</h2>");
+        var date1=date.getDate();
+        document.write("<h2>"+date1+"월</h2>");
+        var week=date.getDay();
+        //0부터 일요일
+        if(week==1)document.write("<h2>Monday</h2>")
+        else if(week==2)document.write("<h2>Tuesday</h2>")
+        else if(week==3)document.write("<h2>Wednesday</h2>")
+        else if(week==4)document.write("<h2>Thursday</h2>")
+        else if(week==5)document.write("<h2>Friday</h2>")
+        else if(week==6)document.write("<h2>Saturday</h2>")
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

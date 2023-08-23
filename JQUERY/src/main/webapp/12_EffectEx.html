@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        div{position: absolute; left: 0; top: 0; display: none;}
+        img{width: 500px; height: 350px;}
+    </style>
+</head>
+<body>
+    <div><img src="images/Desert.jpg"></div>
+    <div><img src="images/Hydrangeas.jpg"></div>
+    <div><img src="images/Chrysanthemum.jpg"></div>
+    <div><img src="images/Koala.jpg"></div>
+    <div><img src="images/Penguins.jpg"></div>
+    <div><img src="images/Tulips.jpg"></div>
+
+<!-- 전체 fadeout하고 div의 index를 이용해서 그림하나씩 fadein하게 코딩 -->
+    <script src="script/jquery-3.6.4.js"></script>
+    <script type="text/javascript">
+        var imgNum=0;
+        setInterval(function(){
+            for(var i=0; i<=5; i++) $('div').eq(i).fadeOut(1000);
+            $('div').eq(imgNum).fadeIn(1000);
+            imgNum++;
+            if(imgNum>5) imgNum=0;
+
+        }, 1500)
+    </script>
+</body>
+</html>

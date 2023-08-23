@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>24_ImageControll12.html</title>
+    <style type="text/css">
+        #view{position: relative; width: 600px; height: 400px; margin: 0 auto; border: 2px solid blue; overflow: hidden;}
+        #imgs{position: absolute; width: 4800px; height: 400px; left: 0; top: 0; border: 1px dashed red; transition: 0.3s;}
+        img{width: 600px; height: 400px;}
+
+        #lbutton{position: absolute; width: 50px; height: 50px; border-radius: 50%; top:350px; left: 0; background-image: url(images/ico_movie_171115.png); background-position: -60px -460px; border: 1px solid black;}
+        #rbutton{position: absolute; width: 50px; float: left; height: 50px; border-radius: 50%; top:350px; right: 0; background-image: url(images/ico_movie_171115.png); background-position: 0px -460px; border: 1px solid black;}
+
+        
+    </style>
+    <script type="text/javaScript">
+        // var xdist=0;
+        var imgNum=0;
+        function move(x) {
+            if(x==1){
+                if(imgNum==7) return; //오른쪽에 남은 이미지가 더이상 없을 경우 종료
+                imgNum++;
+            }else if(x==-1){
+                if(imgNum==0) return; //왼쪽에 남은 이미지가 더이상 없을 경우 종료
+                imgNum--;
+            }
+            var dist= -600*imgNum;
+            document.getElementById("imgs").style.left=dist+"px";
+            
+
+
+            // var dist=x*-600;
+            // xdist+=dist
+            // if(xdist<-4200) xdist=0;
+            // if(xdist>0) xdist=-4200;
+            // document.getElementById("imgs").style.left=xdist+"px";
+        }
+    </script>
+</head>
+<body>
+     <div id="view">
+        <div id="imgs">
+            <img src="images/Koala.jpg"><img src="images/Chrysanthemum.jpg"><img src="images/Desert.jpg"><img src="images/Hydrangeas.jpg"><img src="images/Jellyfish.jpg"><img src="images/Lighthouse.jpg"><img src="images/Penguins.jpg"><img src="images/Tulips.jpg">
+        </div>
+
+        <div id="lbutton" onclick="move(-1);"></div>
+        <div id="rbutton" onclick="move(1);"></div>
+</body>
+</html>

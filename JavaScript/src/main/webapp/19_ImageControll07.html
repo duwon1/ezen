@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>19_ImageControll07.html</title>
+    <style type="text/css">
+        #view{position: relative; width: 170px; height: 255px; border: 3px solid blue; left: 100px; overflow: hidden;}
+        #imgs{position: absolute; width: 850px; height: 255px; border: 1px dashed red; left: 0px; transition: 0.2s; }
+    </style>
+    <script type="text/javaScript">
+        var imgNum=0;
+        function moveImg() {
+            imgNum++;
+            if(imgNum>4) imgNum=0;
+            var dist=170*imgNum*(-1);
+            document.getElementById("imgs").style.left=dist+"px";
+        }
+    </script>
+</head>
+<body>
+    <div id="view" onclick="moveImg();"> 
+        <!-- 이미지를 보여주는 공간 div 파란색 border -->
+        <div id="imgs">
+            <!-- 다섯개의 이미지를 품고 한번에 이동하는 div 빨간색  border -->
+            <img src="images/1.jpg" id="target"><img src="images/2.jpg" id="target"><img src="images/3.jpg" id="target"><img src="images/4.jpg" id="target"><img src="images/5.jpg" id="target">
+        </div>
+    </div>
+</body>
+</html>

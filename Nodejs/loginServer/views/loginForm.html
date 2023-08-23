@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+
+    </script>
+    <link rel="stylesheet" type="text/css" href="login.css">
+</head>
+
+<body onload="log()">
+    <form action="login" method="post">
+        <div class="box">
+            <div id="title">로그인</div>
+        </div>
+        <div class="box">
+            <div class="attr1">아이디</div>
+            <div class="attr2">&nbsp;&nbsp;<input type="text" size="20" name="userid" style="width:200px;height:20px;"
+                    id="userid"></div>
+        </div>
+        <div class="box">
+            <div class="attr1">비밀번호</div>
+            <div class="attr2">&nbsp;&nbsp;<input type="password" size="20" name="pwd" id="pwd"
+                    style="width:200px;height:20px;"></div>
+        </div>
+        <div class="box">
+            <div id="footer">
+                <input type="submit" value="로그인" />
+                <input type="reset" value="다시작성" />
+                <input type="button" value="카카오로 회원가입 및 로그인" onclick="location.href='/kakao'">
+            </div>
+        </div>
+    </form>
+    <script>
+        function log() {
+            let k = new URL(location.href).searchParams.get('loginError')
+            if (k) {
+                alert(k)
+                location.href = '/'
+            }
+        }
+    </script>
+</body>
+
+</html>

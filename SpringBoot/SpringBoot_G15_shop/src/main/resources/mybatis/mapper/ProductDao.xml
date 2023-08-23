@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+  <mapper namespace = "com.ezen.g15.dao.IProductDao">
+  
+    <select id="getNewList" resultType="com.ezen.g15.dto.ProductVO">
+      select * from new_pro_view
+    </select>
+    
+    <select id="getBestList" resultType="com.ezen.g15.dto.ProductVO">
+      select * from best_pro_view
+    </select>
+  
+   <select id="getKindList" resultType="com.ezen.g15.dto.ProductVO">
+      select * from product where kind =#{param1}
+    </select>
+  
+     <select id="getProduct" resultType="com.ezen.g15.dto.ProductVO">
+      select * from product where pseq =#{param1}
+    </select>
+    
+    <select id="getBannerList" resultType="com.ezen.g15.dto.BannerVO">
+        select * from banner where order_seq &lt;=5 order by order_seq
+     </select>
+  
+  </mapper>

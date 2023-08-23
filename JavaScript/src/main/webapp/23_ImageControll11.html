@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>23_ImageControll11.html</title>
+    <style type="text/css">
+        #view{position: relative; width: 600px; height: 400px; margin: 0 auto; border: 2px solid blue;overflow: hidden;}
+        #imgs{position: absolute; width: 4800px; height: 400px; left: 0; top: 0; border: 1px dashed red; transition: 0.3s;}
+        img{width: 600px; height: 400px;}
+
+        #remote{position: relative; width: 200px; height: 50px; text-align: center; border: 1px solid white; margin: 0 auto; top: 350px;}
+        ul{list-style: none; padding: 0; margin: 0; display: inline-block; }
+        li{float: left; width: 14px; height: 14px; background-color: white; border-radius: 50%; margin: 18px 4px;}
+    </style>
+    <script type="text/javaScript">
+        function move(i) {
+            var dist= -600*i;
+            document.getElementById("imgs").style.left=dist+"px";
+        }
+    </script>
+</head>
+<body>
+    <div id="view">
+        <div id="imgs">
+            <img src="images/Koala.jpg"><img src="images/Chrysanthemum.jpg"><img src="images/Desert.jpg"><img src="images/Hydrangeas.jpg"><img src="images/Jellyfish.jpg"><img src="images/Lighthouse.jpg"><img src="images/Penguins.jpg"><img src="images/Tulips.jpg">
+        </div>
+
+        <div id="remote">
+            <ul>
+                <li onclick="move(0)"></li>
+                <li onclick="move(1)"></li>
+                <li onclick="move(2)"></li>
+                <li onclick="move(3)"></li>
+                <li onclick="move(4)"></li>
+                <li onclick="move(5)"></li>
+                <li onclick="move(6)"></li>
+                <li onclick="move(7)"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

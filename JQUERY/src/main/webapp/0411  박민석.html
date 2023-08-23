@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>0411 박민석.html</title>
+    <style type="text/css">
+    img{width: 600px; height: 400px; }
+    #view{ position: relative; width: 600px; height: 400px; margin: 0 auto; border: 1px dashed black; overflow: hidden;}
+    #imgs{ position: absolute; width: 4800px; height: 400px; left: 0; top: 0; border: 1px dashed red;}
+
+    
+    #remote{position: relative;width: 400px; height: 50px; border: 1px solid white; margin: 0 auto; top:350px; text-align: center; }
+    
+    #currentNum{ position: absolute; top: 0; right: 0; border: 1px solid wheat;
+        width: 100px; height: 40px; font-size: 130%; color: white; text-align: center;line-height: 40px; font-weight: bold; padding-right: 20px;}
+
+    ul{ list-style: none; margin: 0; padding: 0; height:40px; display:inline-block;}
+    li{float:left; width: 20px; height: 20px; background: white; border-radius: 50%; margin: 15px 4px; font-weight:bold; font-size:90%; line-height: 20px; text-align: center; cursor:pointer;} 
+    
+    .selected{ background: black; color: antiquewhite; border: 1px solid white;}
+    
+  
+
+    </style>
+
+
+<script src="Script/jquery-3.6.4.js">
+</script>
+<script type="text/javascript">
+           var imgNum=0;
+           var timer;
+           var isMove=false;
+           var isClickNum;
+        $(function(){
+            $('li').click(function(){
+                isClickNum = $(this).index();
+                if(isClickNum == 0){
+                    if(isMove == true) return;
+                    if(imgNum == 0) return;
+                    imgNum--;
+                    var dist = imgNum * -600;
+                    $('#imgs').animate({left:dist}, 300);
+                    $('li').removeClass('selected');
+                    $('li').eq(idx).addClass('selected');
+                    $('#currentNum').html( (imgNum+1) + "/8");
+                }else if(isClickNum == 9){
+                    if(isMove == true) return;
+                    if(imgNum == 7) return;
+                    imgNum++;
+                    var dist = imgNum * -600;
+                    $('#imgs').animate({left:dist}, 300);
+                    $('li').removeClass('selected');
+                    $('li').eq(idx).addClass('selected');
+                    $('#currentNum').html( (imgNum+1) + "/8");
+                }else if(isClickNum == 10){
+                    if(isMove == false){
+                        isMove = true;
+                    timer = setInterval(function(){
+                        imgNum++;
+                        if(imgNum > 7) imgNum=0;
+                        var dist = imgNum * -600;
+                        $('#imgs').animate({left:dist}, 300);
+                        $('li').removeClass('selected');
+                    $('li').eq(idx).addClass('selected');
+                    $('#currentNum').html( (imgNum+1) + "/8");
+                    }, 1000);
+                    }else{
+                        isMove = false;
+                        window.clearInterval(timer);
+                    }
+                }else{
+                    if(isMove == true) return;
+                    imgNum = $(this).index()-1;
+                    var dist = imgNum * -600;
+                    $('#imgs').animate({left:dist}, 300);
+                    $('#currentNum').html( (imgNum+1) + "/8");
+                    $('li').removeClass('selected');
+                    $('li').eq(idx).addClass('selected');
+                }
+                $('li:first').addClass('selected');
+            });
+            $('li:first').addClass('selected');
+        })
+
+        
+
+
+</script>
+</head>
+<body>
+    <div id="view">
+        <div id="imgs"><img src="images/Koala.jpg"><img src="images/Chrysanthemum.jpg"><img src="images/Desert.jpg"><img src="images/Hydrangeas.jpg"><img src="images/Jellyfish.jpg"><img src="images/Lighthouse.jpg"><img src="images/Penguins.jpg"><img src="images/Tulips.jpg"></div>
+
+        <div id="currentNum">1/8</div>
+
+        <div id="remote">
+            <ul>
+                <li >◁</li>
+                <li >1</li>
+                <li >2</li>
+                <li >3</li>
+                <li >4</li>
+                <li >5</li>
+                <li >6</li>
+                <li >7</li>
+                <li >8</li>
+                <li >▷</li>
+                <li >▶</li>
+            </ul>
+            
+       
+
+</body>
+</html>

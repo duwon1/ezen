@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>29_Radio_Check.html</title>
+    <style type="text/css">
+        img{vertical-align: middle;}
+    </style>
+    <script type="text/javaScript">
+        var selectIndex=0; //1,2번 라디오 버튼 중 어떤게 선택된 상태인지 저장할 변수
+        function selectRadio(x) {
+            //클릭된 라디오박스를 선택상태로, 나머지 모두 미선택 상태로
+            // document.getElementById("r1").src="images/radio2.jpg";
+            // document.getElementById("r2").src="images/radio2.jpg";
+
+            var rb=document.getElementsByClassName("gender")
+            //클래스 이름으로 select된 태그들(같은 class 이름의 태그들)을 하나의 변수에 넣으면, 각 태그들은 배열처럼 인식되어 rb[0], rb[1] 라는 이름으로 사용이 가능.
+            // rb[0].src="images/radio2.jpg";
+            // rb[1].src="images/radio2.jpg";
+            for(var i=0; i<rb.length; i++) rb[i].src="images/radio2.jpg";
+            
+            // document.getElementById("r"+x).src="images/radio1.jpg";
+            rb[x-1].src="images/radio1.jpg";
+            
+            selectIndex=Number(x);
+            document.getElementById("val").value=x;
+        }
+        
+        var selectIndexes=[0,0,0]; //각각의 체크박스가 어떤게 선택된 상태인지를 저장할 배열
+        function selectCheck(x) {
+            //x번째 체크박스를 선택->미선택 || 미선택->선택
+            var cb=document.getElementsByClassName("hobby")
+            if(selectIndexes[x-1]==0){
+                cb[x-1].src="images/check1.jpg";
+                selectIndexes[x-1]=1;
+            }else{
+                cb[x-1].src="images/check2.jpg";
+                selectIndexes[x-1]=0;
+            }
+
+            var str="";
+            for(var i=0; i<3;i++){
+                if(selectIndexes[i]==1)
+                str+=(i+1)+" ";
+            }
+            document.getElementById("val2").value=str;
+        }
+    </script>
+</head>
+<body>
+    <table width="700" bgcolor="black" cellspacing="1">
+        <tr bgcolor="white" height="70">
+            <th width="150">성별</th>
+            <td width="350">
+                남성&nbsp; <img src="images/radio2.jpg" id="r1" class="gender" onclick="selectRadio(1);">
+                &nbsp;&nbsp;&nbsp;
+                여성&nbsp; <img src="images/radio2.jpg" id="r2" class="gender" onclick="selectRadio(2);">
+                &nbsp;&nbsp;&nbsp;
+                <input type="text" id="val">
+            </td>
+            <tr bgcolor="white" height="70">
+                <th width="150">취미</th>
+                <td width="350">
+                    스포츠&nbsp;<img src="images/check2.jpg" id="c1" onclick="selectCheck(1);" class="hobby">
+                    &nbsp;&nbsp;&nbsp;
+                    영화&nbsp;<img src="images/check2.jpg" id="c2" onclick="selectCheck(2);" class="hobby">
+                    &nbsp;&nbsp;&nbsp;
+                    독서&nbsp;<img src="images/check2.jpg" id="c3" onclick="selectCheck(3);" class="hobby">
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="text" id="val2">
+                </td>
+            </tr>
+        </tr>
+    </table>
+</body>
+</html>

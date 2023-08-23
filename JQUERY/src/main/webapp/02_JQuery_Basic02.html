@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02_JQuery_Basic02.html</title>
+
+    <script src="script/jquery-3.6.4.js"></script>
+    <script type="text/javascript">
+        // 4-1 jQuery 자식(손)선택자와 후손 선택자1
+        //-자식(손) 선택자, 후손 선택자
+        // $(function(){  $('div h1').css('color','red');   });
+        // $(function(){  $('div>h1').css('color','blue');   });
+        //선택자1과 선택자2 사이 공백(선택자1 선택자2): 선택자1의 자손 중 선택자2 모두(자손의 자손도 포함)
+        //선택자1>선택자2 : 선택자1의 바로 아래 자손들 중 선택자2 모두(자손의 자손은 미포함)
+
+        // 4-2 jQuery 자식(손) 선택자와 후손 선택자 2 - 두개 이상의 요소를 한번에 변경
+        // var object={a:10, b:20};
+        // $(function(){
+        //     $("#wrap>section").children().css(
+        //         {"background-color":"yellow", "border":"3px solid #f00", "color":"red"}
+        //         ); //객체형식으로 두가지 이상의 항목을 변경
+        //         //.children() : 선택자로 선택한 태그 중 자신을 제외한 모든 자식 태그를 선택
+
+        //         //따로따로 지정한 경우
+        //         // $("#wrap>section").children().css("background-color","yellow");
+        //         // $("#wrap>section").children().css("border","3px solid #f00");
+        //         // $("#wrap>section").children().css("color","red");
+
+        //         // //체이닝 방식
+        //         // $("#wrap>section").children().css("background-color","yellow").css("border","3px solid #f00").css("color","red");
+        //     });
+
+
+        // prev(), next(), $(".txt+p")
+        // $(function(){
+        //     var style_1={"background-color":"#0ff", "border":"2px solid #f00"};
+        //     var style_2={"background-color":"#ff0", "border":"2px dashed #f00"};
+        //     //스타일 객체를 변수에 저장하여 활용
+        //     // $(".txt").prev().css(style_1);
+        //     $(".txt").next().next().css(style_2);
+        //     // $(".txt+p").css(style_2);
+        //     // $(".txt~p").css(style_2);
+        // })
+        
+        // // prevAll(), nextAll(), siblings()
+        // $(function(){
+        //     var style_1={"background-color": "#0ff", "border":"2px solid #f00"};
+        //     var style_2={"background-color": "#ff0", "border":"2px dashed #f00"};
+        //     var style_3={"color":"#f00"};
+        //         $(".txt").prevAll().css(style_1);
+        //         // $(".txt").nextAll().css(style_2);
+        //         // $(".txt").siblings().css(style_3); //자신을 제외한 모든 형제 선택자들
+        // })
+        
+        /* 함수형 선택자들 정리
+        $("요소선택자").parent():요소선택자의 부모 요소를 선택함
+        $("요소선택자").parents():요소선택자의 상위요소를 모두 선택함
+        $("요소선택자").closest("div"):요소선택자의 상위 요소 중 가장 가까운 div만 선택함
+        
+        $("요소선택자 하위요소"):요소선택자의 지정하위요소 모두를 선택함
+        $("요소선택자>자식요소"):요소선택자의 1단계 자식이 있는 자식요소만 선택함
+        $("요소선택자+하위요소"):요소선택자의 바로 다음에 나오는 지정하위 요소를 선택함
+        $("요소선택자~하위요소"):요소선택자의 뒤에 나오는 지정하위요소들을 선택함
+        
+        $("요소선택자").children:요소선택자의 모든 자식 요소를 선택
+        $("요소선택자").prev():요소선택자의 바로 이전 요소를 선택
+        $("요소선택자").prevAll():요소선택자의 모든 이전 요소를 선택
+        $("요소선택자").prevUntil("요소명"):요소선택자의 요소명에 지정한 곳까지 모두 선택
+        $("요소선택자").next(): 요소 선택자의 다음 요소를 선택
+        $("요소선택자").nextAll():요소선택자의 다음 모든 요소를 선택
+        $("요소선택자").nextUntil("h2"):요소선택자부터 H2테크 요소까지 모두 선택
+        $("요소선택자").siblings():요소선택자의 형제요소 전체를 선택
+        */
+       
+       // nextUntil() prevUntil()
+    //    $(function(){
+    //             var style_1={"background-color": "#0ff", "border":"2px solid #f00"};
+    //             var style_2={"background-color": "#ff0", "border":"2px dashed #f00"};
+    //             $(".txt3").prevUntil(".title").css(style_1); //.txt3바로 위부터 .title아래까지
+    //             $(".txt3").nextUntil(".txt6").css(style_2); //.txt3바로 아래부터 .txt6까지
+    //     })
+
+    // .parents() parents("div")
+    // $(function(){
+        //.txt1의 모든 부모들
+        // $(".txt1").parents().css({"border":"3px dashed #00f"});
+        
+        //.txt2의 모든 부모들 중 div만
+        // $(".txt2").parents("div").css({"border":"3px solid #f00"});
+        
+        // //.txt1의 부모만...
+        // $(".txt1").parent().css({"border":"3px solid #000"});
+    // })
+
+    // closest("div")
+    $(function(){
+        $(".txt1").closest("div").css("border","2px solid #f00");
+    });
+
+
+
+    </script>
+</head>
+<body>
+
+    <!-- closest("div") -->
+    <h1 class="title">선택자</h1>
+    <div style="border:3px dashed blue; padding:5px;">
+        <div style="border:3px dashed blue; padding:5px">
+            <p class="txt1">내용</p>
+        </div></div>
+
+
+
+
+
+    <!-- .parents() parents("div") -->
+    <!-- <h1 class="title">선택자</h1>
+    <section>
+        <div><p class="txt1">내용</p> </div>
+    </section>
+    <section>
+        <div><p class="txt2">내용</p> </div>
+    </section> -->
+
+
+
+
+
+
+
+<!--nextUntil() prevUntil()-->
+    <!-- <h1 class="title">선택자</h1>
+    <p>내용1</p>
+    <p>내용2</p>
+    <p class="txt3">내용3</p>
+    <p>내용4</p>
+    <p>내용5</p>
+    <p class="txt6">내용6</p> -->
+
+
+
+
+
+ <!-- prev(), next(), $(".txt+p")
+ prevAll(), nextAll(), siblings() -->
+<!--  <div id="wrap">
+     <h1>인접 관계 선택자</h1>
+     <p>내용0</p>
+     <p>내용1</p>
+     <p class="txt">내용2</p>
+     <p>내용3</p>
+     <p>내용4</p>
+ </div> -->
+
+
+
+
+
+
+
+<!-- 4-2 자식(손) 선택자와 후손 선택자 2 -->
+<!-- <div id="wrap">
+    <h1>인접 관계 선택자</h1>
+    <p>내용1</p>
+    <section>
+        <h1>자식 요소 선택자</h1>
+        <p>내용2</p>
+    </section>
+    <h1>인접 관계 선택자</h1>
+</div> -->
+
+
+
+
+
+
+
+    <!-- 4-1 자식(손) 선택자와 후손 선택자 -->
+    <!-- <div>
+        <h1>자식(손) 선택자와 후손 선택자</h1>
+        <ul>
+            <li><h1>Apple</h1></li>
+            <li>Bag</li>
+            <li>Cat</li>
+            <li>Dog</li>
+        </ul>
+        <h1>자식(손) 선택자와 후손 선택자</h1>
+    </div> -->
+</body>
+</html>

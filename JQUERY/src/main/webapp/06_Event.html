@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .reverse{background-color: #FF00FF; color: white;}
+        .outer{width: 200px; height: 100px; background-color: orange; padding: 50px; margin: 10px;}
+        .inner{width: 100%; height: 100%; background-color: pink;}
+    </style>
+    <script src="script/jquery-3.6.4.js"></script>
+    <script type="text/javascript">
+
+        //1. 이벤트 연결#1
+        //기존 자바스크립트의 이벤트 연결은 태그 안에 onClick같은 속성을 넣고, 자바스크립트 함수를 연결했지만, 제이쿼리는 직접 명령과 선택자로 태그를 선택하고, 그 문서객체에 이벤트 함수를 연결해서 실행
+        //사용한 이벤트 함수 :on
+        //사용 형태
+        //1)$(selector).on(이벤트이름, 익명함수); //해당 문서객체(selector)에 해당이벤트가 발생하면 익명함수가 실행되는 형식
+        //실제 사용 예
+        // $(function(){
+        //     $('h1:eq(0)').on('click', function(){
+        //         // $('h1:eq(0)').css({'background':'red', "color":'white'});
+        //     }); //h1태그를 클릭하면 익명함수의 내용이 실행됨
+        //     $('h1:eq(1)').on('click', function(){
+        //         // $('h1:eq(1)').css({'background':'pink', "color":'white'});
+        //     }); //h1태그를 클릭하면 익명함수의 내용이 실행됨
+        //     $('h1:eq(2)').on('click', function(){
+        //         // $('h1:eq(2)').css({'background':'skyblue', "color":'white'});
+        //     }); //h1태그를 클릭하면 익명함수의 내용이 실행됨
+            
+        //     $('h1').on('click', function(){
+        //         //현재 클릭이 된 h1 ->this
+        //         var k = $(this).index();
+        //         //클릭된 h1태그의 index추출
+        //         // $('h1:eq('+ k+')').css({'background':'red', "color":'white'});
+        //         // $('h1').eq( k).css({'background':'red', "color":'white'});
+
+        //         if(k==0)
+        //             $('h1').eq(k).css({"background":"red", "color":"white"});
+        //         else if(k==1)
+        //             $('h1:eq(1)').css({"background":"blue", "color":"white"});
+        //         else
+        //             $('h1:eq(2)').css({"background":"#FF00FF", "color":"white"});
+
+        //     })
+        // });
+
+        //2) $(selector).on(object);
+
+        // $('h1').on('mouseover',function(){});
+        // $('h1').on('mouseout',function(){});
+        //$('h1').on(object)
+        // $(function(){
+        //     $('h1').on(
+        //         { 
+        //             // 'mouseover':function(){$(this).css({'background':'#FF00FF','color':'white'})},
+        //             // 'mouseout':function(){$(this).css({'background':'#FFFFFF','color':'black'})}
+        //             'mouseover':function(){$(this).addClass('reverse')},
+        //             'mouseout':function(){$(this).removeClass('reverse')}
+        //         }
+        //     );
+        //     //$(this) : 현재 설정된 이벤트가 일어난 h1태그를 가리킴
+        // });
+
+        //2. 이벤트 연결2
+        //-hover() : mouseenter이벤트와 mouseleave 이벤트를 동시에 연결
+        //-$(selector).hover(
+        //     function(event){},
+        //     function(event){}
+        // );
+        // $(function(){
+        //     $('h1').hover(
+        //     function(event){$(this).addClass('reverse');},
+        //     function(event){$(this).removeClass('reverse');}
+        //     );
+        // });
+        // //on대신 hover, 이벤트 이름 안쓰고 익명함수만 컴마로 구분해 표현
+
+        // //이처럼 click 이벤트로 변형이 가능함
+        // // $('h1').click(function(){ 명령 });로도 가능
+
+        // //3. 이벤트 제거
+        // $(function(){
+        //     $('h1').on('click', function(){
+        //         $(this).html('CLICK');//내용을 CLICK으로 변경
+        //         $(this).off();//이벤트 제거
+        //     });
+        // });
+
+        //4. 매개변수 context
+        // -context:selector가 적용하는 범위 한정
+        // -특정 부분의 선택자를 선택하고 싶을 때 사용하는 매개변수
+        //-$(selector, context)
+        //아래의 내용은 클릭된 div안의 h1과 p를 따로 선택자로 쓰고자할때
+        //자손 선택자를 사용하고자 하는데, 부모가 this라면 $('this h1')라고 쓰면 안됨
+        //this가 ' '안에 들어가는 순간 this로 사용이 안됨. 그냥 문자 ('this')로 인식함
+    // $(function(){
+    //     $('div').click(function(){
+    //         // 현재 클릭된 div->$(this)
+    //         // $('this h1') => X
+    //         // $('this p') => X
+    //         //클릭된 div를 this로 표현 -> 아래는 h1 중 click된 div 속 h1을 지정
+    //         var header =$('h1', this).text();
+    //         var paragraph =$('p', this).text();
+    //         var k = header +":"+paragraph;
+    //         $('body').append($('<h1>'+k+'</h1>'));
+    //     });
+    // });
+
+    //5. 이벤트 강제 발생
+    //사용형태
+    //$(selector).trigger(eventName);
+    // $(function(){
+    //     $('h1').click(function(){
+    //         $(this).html(function(index,html){return html +'>';});
+    //     }); //클릭된 div태그의 내용에 '>'추가
+
+    //     setInterval(function(){
+    //         $('h1').last().trigger('click'); //$('h1').last().click();
+    //     }, 1500); //3초마다 마지막 div를 클릭한 것처럼 내용에 '>'추가
+    // });
+
+
+    //6. 마우스 이벤트
+    $(function(){
+        $('.outer').mouseover(function(){
+            $('body').append('<h3>MouseOver~</h3>');
+        }).mouseenter(function(){
+            $('body').append('<h3>MouseEnter</h3>');
+        });
+    });
+
+    //click:마우스 클릭할 때 이벤트 발생
+    //dbclick:마우스 더블클릭할 때 이벤트 발생
+    //mousedown: 마우스 버튼을 누를 때 이벤트 발생
+    //mouseup: 마우스 버튼을 뗄 때 이벤트 발생
+    //mouseenter: 마우스가 요소의 경계 외부에서 내부로 이동할 때 발생
+    //mouseleave: 마우스가 요소의 경계 내부에서 외부로 이동할 때 발생
+    //mousemove: 마우스를 움직일 때 발생
+    //mouseout: 마우스가 요소를 벗어날 때 발생 
+    //mouseover: 마우스가 요소 안에 들어올 때 발생 
+
+    //7. 키보드 이벤트
+    //-keydown: 키보드가 눌러질 때 발생
+    //-keypress: 글자가 입력될 때 발생
+    //-keyup: 키보드가 떼어질 때 발생
+    $(function(){
+        $('textarea').keyup(function(){
+            var inputlength=$(this).val().length;//키보드가 눌렸다가 떼어진 객체(textarea)의 글자개수를 추출함
+            var remain = 150-inputlength;
+            $('h1').html(remain);//남은 글자 표시
+            if(remain>=0) $('h1').css('color','black'); 
+            else $('h1').css('color','red'); 
+        });
+    });
+
+    </script>
+</head>
+<body>
+<!-- 7. 키보드 이벤트 -->
+<div><p>지금 내 생각을</p><h1>150</h1>
+    <textarea cols="70" rows="5"></textarea>
+    <!-- <input type="textarea" value=""이 사용이 태그의 특성상 불편함으로 시작태그와 끝태그 사용 --> 
+</div>
+
+
+<!-- 6. 마우스 이벤트 -->
+<!-- <div class="outer">
+    <div class="inner"></div>
+</div> -->
+
+
+
+<!-- 5.이벤트 강제 발생 -->
+<!-- <h1>Start: </h1>
+<h1>Start: </h1>
+<h1>TRIGGER: </h1> -->
+
+
+<!-- 4. 매개변수 context -->
+<!-- <div><h1>Header1</h1><p>Paragraph1</p></div>
+<div><h1>Header2</h1><p>Paragraph2</p></div>
+<div><h1>Header3</h1><p>Paragraph3</p></div> -->
+
+
+
+    <!-- 1/2/3. 이벤트 연결/제거 -->
+    <!-- <h1>Header-0</h1>
+    <h1>Header-1</h1>
+    <h1>Header-2</h1> -->
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>21_Shadow.html</title>
+<style type="text/css">
+	div{width: 600px; margin-bottom:20px; padding: 10px 30px; background-color:yellow;}
+	.a{box-shadow:5px 5px;}
+	/* 첫번째와 두번재 요소는 좌우 상하 그림자 크기, 양수는 오른족 아래로, 음수는 왼쪽위로 */
+	.b{box-shadow: 5px 5px 5px;}
+	/* 세번째 요소는 번짐 정도 */
+	.c{box-shadow:5px 5px 5px 5px;}
+	.d{box-shadow:5px 5px 5px 5px orange;}
+	/* 네번째 요소는 그림자 확장, 다섯번째 요소는 색깔 */
+	
+	/*같은 방식으로 text-shadow도 있음. 다만 글자에 그림자를 넣는 동작임. 사용할 때 글자의 굵기가 굵은 font를 적용 후 사용하는 게 자연스러움  */
+</style>
+</head>
+<body>
+
+<div class="a"><p>box-shadow:5px 5px</p></div>
+<div class="b"><p>box-shadow:5px 5px 5px</p></div>
+<div class="c"><p>box-shadow:5px 5px 5px 5px</p></div>
+<div class="d"><p>box-shadow:5px 5px 5px 5px orange</p></div>
+
+</body>
+</html>

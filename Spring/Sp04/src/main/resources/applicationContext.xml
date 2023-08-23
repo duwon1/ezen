@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 현재 폴더는 스프링 컨테이너로 사용되고 있음을 알리는 태그 : <beans> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="com.ezen.member.dto.DataBaseConnectionInfo"
+		id="dbconinfo1">
+		<property name="url"
+			value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="driver"
+			value="oracle.jdbc.driver.OracleDriver" />
+		<property name="id" value="scott" />
+		<property name="pw" value="tiger" />
+	</bean>
+	<!--스프링 컨테이너의 Bean 태그에 property 태그를 이용하여 각 멤버변수에 초기값을 넣어줄 수 있음 -->
+	<!--위와 같이 property 태그로 멤버변수에 값을 초기화하려면 각 변수의 getter setter 가 필수로 존재해야함 -->
+
+	<!-- 스프링 컨테이너에 저장되는 Bean 은 한개의 객체이므로, 다른 내용의 객체가 필요하다면 초기값을 달리해서 또 하나의 Bean 
+		을 생성함 -->
+	<bean class="com.ezen.member.dto.DataBaseConnectionInfo"
+		id="dbconinfo2">
+		<property name="url"
+			value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="driver"
+			value="oracle.jdbc.drvier.OracleDriver" />
+		<property name="id" value="system" />
+		<property name="pw" value="adminuser" />
+	</bean>
+
+
+	<bean class="com.ezen.member.dao.StudentDao" id="studentdao">
+		<constructor-arg ref="dbconinfo1"></constructor-arg>
+	</bean>
+
+
+	<bean class="com.ezen.member.service.StudentInsertService"
+		id="insertService">
+		<constructor-arg ref="studentdao"></constructor-arg>
+	</bean>
+
+    <bean class="com.ezen.member.service.StudentSelectAllService"
+		id="selectAllService">
+		<constructor-arg ref="studentdao"></constructor-arg>
+	</bean>
+    
+
+
+    <bean class="com.ezen.member.service.SelectOneService"
+		id="selectOneService">
+		<constructor-arg ref="studentdao"></constructor-arg>
+	</bean>
+    
+
+   
+    <bean class="com.ezen.member.service.StudentUpdateService"
+		id="updateService">
+		<constructor-arg ref="studentdao"></constructor-arg>
+	</bean>
+    
+   
+    <bean class="com.ezen.member.dto.EMSInformationService"
+		id="informationService">
+	
+	<property name="info">
+	         <value>Education Management System program was developed in 2015.</value>
+	</property>	
+	<property name="copyRight">
+	         <value>COPYRIGHT(C) 2015 EMS CO., LTD. ALL RIGHT RESERVED.
+	         CONTACT MASTER FOR MORE INFORMATION</value>
+	</property>	
+    <property name="ver"><value>The version is 1.0</value></property>	
+	<property name="sYear"><value>2021</value></property>	
+	<property name="sMonth"><value>10</value></property>	
+	<property name="sDay"><value>19</value></property>	
+	
+	<property name="eYear" value= "2021" />	 <!--  단일 태그 방식 -->
+	<property name="eMonth" value= "11" />	
+	<property name="eDay" value= "19" />	
+		
+	<property name="developers">
+	       <list>
+	       <value>ga</value><value>nag</value>
+	       <value>nig</value><value>adh</value>
+	       <value>gfhdfh</value>
+	       </list>
+	</property>		
+		
+		
+		<property name="administators">
+	       <map>
+	       <entry>
+	       <key><value>Cheney</value></key>
+	       <value>cheney@springPjt.org</value>
+	       </entry>
+	        <entry>
+	       <key><value>Jasper</value></key>
+	       <value>jasper@springPjt.org</value>
+	       </entry>
+	       </map>
+	</property>	
+		
+		
+		<property name="dbInfos">
+	       <map>
+	       <entry>
+	       <key><value>dev</value></key>
+	      <ref bean="dbconinfo1"/>
+	       </entry>
+	        <entry>
+	       <key><value>real</value></key>
+	       <ref bean="dbconinfo1"/>
+	       </entry>
+	       </map>
+	</property>	
+		
+		
+		
+	</bean>
+    
+   
+   
+
+
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

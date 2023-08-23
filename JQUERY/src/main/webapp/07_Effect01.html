@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        span{font-size: 180%; font-weight: bold; display: none;}
+    </style>
+</head>
+<body>
+    <button>Show It</button>        <!--버튼을 만드는 또다른 방법-->
+    <button>Hide It</button>
+    <span>안녕하세요.</span>
+    <br>
+    <button>Show It slow</button>
+    <button>Hide It slow</button>
+    <span>반갑습니다.</span>
+    
+    
+    
+    
+    <script src="script/jquery-3.6.4.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('button').click(function(){
+                var idx = $(this).index();
+                if(idx==0){
+                    //show it :span태그를 배경색 노란색으로 바꾸고 화면에 표시
+                    // $('span:first').css('background',"yellow");
+                    // $('span:first').show(); //화면에 보여지게 하는 함수 display:block을 쓰지 않고 show함수를 써서 화면에 보이게 함. 각종 옵션으로 화면에 나타나는 변화에 또다른 효과를 줄 수도 있고 당연히 display:block의 내용은 포함되게 실행됨.
+
+                    $('span:first').show(function(){
+                        $(this).css('background',"yellow");
+                    });
+                    //show와 함게 다른 동작을 추가하고 싶다면 .show(function(){ })
+                    //이처럼 show()안에 function(){}을 넣어서 실행시킴
+                    //.show()에 익명함수를 넣으면, 함수 동작 시간에 약간의 동작시간지연이 포함됨
+                }else if(idx==1){
+                    
+                    
+                }else if(idx==2){
+
+                }else{
+                    
+                }
+                
+            });
+            $('button:eq(0)').click(function(){
+                
+            });
+            $('button:eq(1)').click(function(){
+                $('span:first').hide(function(){});
+                
+            });
+            $('button:eq(2)').click(3000,function(){
+                $('span:last').show(function(){
+                    $(this).css('background',"yellow");
+                });
+            });
+            $('button:eq(3)').click(function(){
+                $('span:last').hide(3000,function(){});
+                
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Everything all at once</title>
+    <style type="text/css">
+        img{width:600px; height: 400px;}
+        #view{position: relative; width: 600px; height: 400px; margin: 0 auto; border: 1px dashed black; overflow: hidden;}
+        #imgs{position: absolute; width: 4800px; height: 400px; left: 0; top: 0; border: 1px dashed red;}
+
+        #remote{position:relative; width: 250px; height: 50px; border: 2px solid white; margin: 0 auto; top: 350px; text-align: center;}
+        #currentNum{position:absolute; right: 0; top: 0; width: 100px; height: 40px; font-size: 130%; color: white; text-align: right; line-height: 40px; font-weight: bold; padding-right: 20px;}
+
+        ul{list-style: none; margin: 0; padding: 0; display: inline-block;}
+        li{float: left; width: 14px; height: 14px; background-color: white; border-radius: 50%; margin: 18px 4px; font-size: 70%; font-weight: bold; line-height: 14px; text-align: center; cursor: default;}
+
+        .selected{background-color: black; color: white; }
+    </style>
+</head>
+<body>
+    <div id="view">
+        <div id="imgs"><img src="images/Koala.jpg"><img src="images/Chrysanthemum.jpg"><img src="images/Desert.jpg"><img src="images/Hydrangeas.jpg"><img src="images/Jellyfish.jpg"><img src="images/Lighthouse.jpg"><img src="images/Penguins.jpg"><img src="images/Tulips.jpg"></div>
+        <div id="remote">
+            <ul>
+                <li id="lbutton">◁</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li id="rbutton">▷</li><li id="autobtn">▶</li>
+            </ul>
+        </div>
+        <div id="currentNum"></div>
+    </div>
+
+
+
+
+
+
+    <script src="script/jquery-3.6.4.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            let imgNum=0;
+            let flag;
+            $('li').click(function(){
+                const idx=$(this).index();
+                $(this).eq(1).addClass('selected');
+                if(1<=idx&&idx<=8){
+                    if(flag==true) return;
+                    const dist=idx*-600;
+                    imgNum=idx-1;
+                    $('li').removeClass('selected');
+                    $(this).eq(idx).addClass('selected');
+                    $('#imgs').animate({left:dist},300);
+                    
+                    $('#currentNum').html((imgNum+1)+'/8');
+            
+                }
+                
+                $('#lbutton').click(function(){
+                    if(flag==true) return;
+                    if(imgNum==0) return;
+                    imgNum--;
+                    $('li').removeClass('selected');
+                    $('li').eq(idx).addClass('selected');
+                    $('#imgs').animate({left:imgNum*-600},300);
+                    $('#currentNum').html((imgNum+1)+'/8');
+            });
+            $('#rbutton').click(function(){
+                if(flag==true) return;
+                if(imgNum==7) return;
+                imgNum++;
+                $('li').removeClass('selected');
+                $('li').eq(idx).addClass('selected');
+                $('#imgs').animate({left:imgNum*-600},300);
+                $('#currentNum').html((imgNum+1)+'/8');
+            });
+            $('#autobtn').click(function(){
+                // const play=$('#autobtn').text();
+                if(flag==false){
+                    $('#autobtn').html('■');
+                    flag=true;
+                    timer=setInterval(function(){
+                        imgNum++;
+                        if(imgNum>7) imgNum=0;
+                        $('#currentNum').html((imgNum+1)+'/8');
+                        $('li').removeClass('selected');
+                        $('li').eq(idx).addClass('selected');
+                        $('#imgs').animate({left:imgNum*-600},300);
+                    },1000);
+                }else{
+                    flag=false;
+                    $('#autobtn').html('▶');
+                    window.clearInterval(timer);
+                    $('#currentNum').html((imgNum+1)+'/8');
+
+                    }
+            })
+            
+            $('#currentNum').trigger('click').html((imgNum+1)+'/8');
+        });
+        });
+    </script>
+
+</body>
+</html>

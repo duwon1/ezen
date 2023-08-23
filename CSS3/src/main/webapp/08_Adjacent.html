@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	/* 인접(Adjacent) 선택자- h1태그의 바로 뒤에 위치하는 h2태그의 color 속성에 red키워드를 적용한다. */
+	h1+h2{color:red;}
+	h2+h3{color:green;}
+	
+	/* 형제(sibling)선택자 - h1태그의 뒤에 위치하는 h3 태그의 color속성에 silver키워드 적용 */
+	h1~h3{background:silver;}
+</style>
+</head>
+<body>
+
+<h1>Header - 1</h1>
+<h2>Header - 2</h2>
+<h2>Header - 2</h2>
+<h3>Header - 3</h3>
+<h2>Header - 2</h2>
+<h3>Header - 3</h3>
+
+</body>
+</html>

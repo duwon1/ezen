@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>24_Visibility.html</title>
+<style type="text/css">
+.box{background-color:yellow; width:300px; height:100px; margin:10px;}
+#box1{display:none;}/* 태그까지 화면에서 제거 */
+#box2{visibility:hidden;} /* 태그가 화면에 보이지 않을 뿐 블럭형식이 동작됨 */
+#box3{visibility:collapse;}/* collapse가 일반 태그에 적용되면, hidden과 같이 적용 */
+table{visibility:collapse;} /* 테이블에 적용되면, 블럭형식만 남고 공간은 사라짐 */
+</style>
+</head>
+<body>
+<span>Dummy</span>
+<table border="1">
+	<tr><td>Test1</td><td>Test2</td></tr>
+	<tr><td>Test3</td><td>Test4</td></tr>
+</table>
+	<span>Dummy</span><br><br><hr>
+	
+	<span>Dummy</span>
+<div id="box1" class="box">
+	<span>교육의 자주성, 전문성, 중립성 및 대학의 자율성은 법률이 정하는 바</span>
+</div>
+	<span>Dummy</span>
+	<br><br>
+
+	<span>Dummy</span>
+<div id="box2" class="box">
+	<span>교육의 자주성, 전문성, 중립성 및 대학의 자율성은 법률이 정하는 바</span>
+</div>
+	<span>Dummy</span>
+	<br><br>
+
+	<span>Dummy</span>
+<div id="box3" class="box">
+	<span>교육의 자주성, 전문성, 중립성 및 대학의 자율성은 법률이 정하는 바</span>
+</div>
+	<span>Dummy</span>
+	<br><br>
+
+</body>
+</html>

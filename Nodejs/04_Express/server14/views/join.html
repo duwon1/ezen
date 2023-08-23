@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="timeline">
+    <form action="/auth/join" method="post" id="join-form">
+        <div class="input-group">
+            <label for="join-email">이메일</label>
+            <input type="email" id="join-email" name="email">
+        </div>
+        <div class="input-group">
+            <label for="join-nick">이름</label>
+            <input type="text" id="join-nick" name="nick">
+        </div>
+        <div class="input-group">
+            <label for="join-password">패스워드</label>
+            <input type="password" id="join-password" name="password">
+        </div>
+        <button id="join-btn" type="submit" class="btn">회원가입</button>
+        <button id="join-btn" class="btn" onclick="location.href='/'">돌아가기</button>
+    </form>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+    function log() {
+        let k = new URL(location.href).searchParams.get('joinError')
+        if (k) {
+            alert(k)
+            location.href = '/join'
+        }
+    }
+</script>
+{% endblock %}

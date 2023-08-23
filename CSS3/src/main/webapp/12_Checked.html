@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#text{width:650px; height:300px; background:silver; overflow:hidden; transition-duration:1s;}
+	#button1{width:300px; height:20px; background:yellow; border:1px solid black;}
+	
+	#button1:active~#text{height:0px;}
+	input[type=checkbox]:checked~#text{height:0px;}
+</style>
+</head>
+<body>
+
+<input type="checkbox"/>체크하면 아래 텍스트가 사라집니다<br><br>
+<div id="button1">클릭하면 아래 텍스트가 사라집니다</div><br>
+<div id="text">
+	<h1>Lorem ipsum</h1>
+	<p>모든 국민은 신체의 자유를 가진다. 
+		누구든지 법률에 의하지 아니하고는 체포·구속·압수·수색 또는 심문을 받지 아니하며, 
+		법률과 적법한 절차에 의하지 아니하고는 처벌·보안처분 또는 강제노역을 받지 아니한다.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.ezen.word.dto.Wordset&apos; to &apos;WordSet&apos;&#x0D;&#x0A;- Original project: &apos;Sp05&apos;&#x0D;&#x0A;- Original element: &apos;com.ezen.word.dto.Wordset&apos;&#x0D;&#x0A;- Renamed element: &apos;com.ezen.word.dto.WordSet&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Wordset&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.ezen.word.dto{Wordset.java[Wordset" matchStrategy="1" name="WordSet" qualified="false" references="true" similarDeclarations="false" stamp="1686544991941" textual="false" version="1.0"/>
+</session>

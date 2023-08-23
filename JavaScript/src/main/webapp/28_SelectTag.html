@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>28_SelectTag.html</head></title>
+    <style type="text/css">
+        #title{position: relative; width: 200px; height: 30px; border: 2px solid grey; line-height: 30px; font-size: 120%; font-weight: bold;}
+        #num{position: absolute; top: 0; left: 0; width: 120px; height: 30px; border: 1px dashed red;}
+        #dropMenu{position: absolute; top: 30px; left: 0; background-color: white; width: 300px; height: 250px; border: 1px solid #EEEEEE; box-shadow: 2px 2px 5px grey; overflow-y: scroll; overflow-x: hidden; visibility: hidden; }
+        
+        #arrow{position: absolute; width: 25px; height: 30px; top: 0; right: 0; border: 1px dotted blue; background-image: url(images/ico_movie_171115.png); background-position: -275px -320px; overflow: hidden;}
+
+        #dropMenu div{position: relative; width: 100%; height: 45px; line-height: 45px; font-weight: bold;}
+        #dropMenu div:hover{background-color: #888888; color:white}
+    </style>
+    <script type="text/javaScript">
+        var flag=false; //현재 드롭메뉴가 보여지고 있는지 감춰진 상태인지 저장할 변수. 최초는 감춰진 상태
+        function clickTitle() {
+            if(flag==true){
+                document.getElementById("dropMenu").style.visibility="hidden";
+                flag=false;
+            }else{
+                document.getElementById("dropMenu").style.visibility="visible";
+                flag=true;
+            }
+        }
+
+        function selectNum(n) {
+            document.getElementById("num").innerHTML='+'+n;
+        }
+    </script>
+</head>
+<body>
+    <select>
+        <option>대한민국 +82</option>
+        <option>폰번호 +010</option>
+        <option>집번호 +02</option>
+        <option>천국 +1004</option>
+    </select>
+<hr>
+
+<div id="title" onclick="clickTitle();"><!--외곽을 표시하며 전체를 감싸는 div-->
+    <div id="num">&nbsp;+82</div>  <!--선택내용 중 일부(+82)가 보여지는 div-->
+    <div id="arrow"></div> <!--오른쪽에 아래쪽 화살표를 표시해주는 div-->
+    <div id="dropMenu"> <!--처음에는 안보이다가 화살표 또는 표시내용을 클릭하면 나타나는 div-->
+        <div onclick="selectNum(+1)">+1 &nbsp;&nbsp;&nbsp; Canada</div>
+        <div onclick="selectNum(+63)">+63 &nbsp;&nbsp;&nbsp; Philippines</div>
+        <div onclick="selectNum(+43)">+43 &nbsp;&nbsp;&nbsp; Indonesia</div>
+        <div onclick="selectNum(+23)">+23 &nbsp;&nbsp;&nbsp; Australia</div>
+        <div onclick="selectNum(+65)">+65 &nbsp;&nbsp;&nbsp; Vietnam</div>
+        <div onclick="selectNum(+2)">+2 &nbsp;&nbsp;&nbsp; USA</div>
+        <div onclick="selectNum(+59)">+59 &nbsp;&nbsp;&nbsp; Germany</div>
+        <div onclick="selectNum(+82)">+82 &nbsp;&nbsp;&nbsp; Korea</div>
+    </div>
+</div>
+</body>
+</html>

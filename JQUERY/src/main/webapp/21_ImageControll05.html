@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 1.이미지들을 이전 예제와 같이 배치하기
+    2. 좌우 버튼을 이미지의 하단 좌우에 배치하고 배경을 설정해 좌우버튼(<,>)으로 표시
+3. 좌우 버튼을 클릭해 이미지를 한칸씩 이동하도록 코딩
+4. id:currentNum에 해당하는 div를 우측 상단에 배치하고, 이미지가 이동하여 표시될때마다 현재 이미지번호를 맞춰 표시하기(1/8...3/8) 적절한 크기의 흰글자로 표시하기. div의 크기 및 기타 css는 임의로 맞춰서 설정하기 -->
+    <style type="text/css">
+        img{width:600px; height: 400px;}
+        #view{position: relative; width: 600px; height: 400px; margin: 0 auto; border: 1px dashed black; overflow: hidden;}
+        #imgs{position: absolute; width: 4800px; height: 400px; left: 0; top: 0; border: 1px dashed red;}
+        #lbutton{position: absolute; left: 0; bottom: 0; width:50px; height: 50px; border-radius: 50%;border: 1px solid black;background-image: url(images/ico_movie_171115.png); background-position: -60px -460px;}
+        #rbutton{position: absolute; right: 0; bottom: 0; width:50px; height: 50px; border-radius: 50%; border: 1px solid black;background-image: url(images/ico_movie_171115.png); background-position: 0px -460px;}
+        #currentNum{position:absolute; right: 0; top: 0; border: 1px solid white; width: 100px; height: 40px; font-size: 130%; color: white; text-align: right; line-height: 40px; font-weight: bold; padding-right: 20px;}
+    </style>
+</head>
+<body>
+    <div id="view">
+        <div id="imgs"><img src="images/Koala.jpg"><img src="images/Chrysanthemum.jpg"><img src="images/Desert.jpg"><img src="images/Hydrangeas.jpg"><img src="images/Jellyfish.jpg"><img src="images/Lighthouse.jpg"><img src="images/Penguins.jpg"><img src="images/Tulips.jpg"></div>
+        <div id="lbutton"></div>
+        <div id="rbutton"></div>
+        <div id="currentNum"></div>
+
+
+
+
+        <script src="script/jquery-3.6.4.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            let imgNum=0;
+            $('#rbutton').click(function(){
+                if(imgNum==7) return;
+                imgNum++;
+                $('#imgs').animate({left:imgNum*-600},300);
+                $('#currentNum').html((imgNum+1)+'/8');
+            });
+            $('#lbutton').click(function(){
+                if(imgNum==0) return;
+                imgNum--;
+                $('#imgs').animate({left:imgNum*-600},300);
+                $('#currentNum').html((imgNum+1)+'/8');
+            });
+            $('#currentNum').html((imgNum+1)+'/8');
+        });
+    </script>
+</body>
+</html>

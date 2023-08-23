@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>27_ImageControll15.html</title>
+    <style type="text/css">
+         #view{position: relative; width: 600px; height: 400px; margin: 0 auto; border: 2px solid blue; overflow: hidden;}
+        #imgs{position: absolute; width: 4800px; height: 400px; left: 0; top: 0; border: 1px dashed red; transition: 0.3s;}
+        img{width: 600px; height: 400px;}
+
+        #remote{position: relative; width: 400px; height: 50px; border: 1px solid white; margin: 0 auto; top: 350px; text-align: center;}
+        ul{list-style: none; padding: 0; margin: 0; height: 40px; display: inline-block;}
+        li{ float: left; width: 20px; height: 20px; background-color: white; border-radius: 50%; margin: 15px 4px; font-weight: bold; font-size: 90%; line-height: 13px; text-align: center; cursor: default; border: 2px solid black;}
+        </style>
+    <script type="text/javaScript">
+        var imgNum=0;
+        var timer;
+        var flag;
+        function move(i) {
+            if(flag==true) return;
+            var dist=-600*i;
+            document.getElementById("imgs").style.left=dist+"px";
+            imgNum=i;
+        }
+        function moveLeft() {
+            if(flag==true) return;
+            imgNum--;
+            if(imgNum<0) return;
+            var dist=-600*imgNum;
+            document.getElementById("imgs").style.left=dist+"px";
+        }
+        function moveRight() {
+            if(flag==true) return;
+            imgNum++;
+            if(imgNum>7) return;
+            var dist=-600*imgNum;
+            document.getElementById("imgs").style.left=dist+"px";
+            
+        }
+        // 자동 버튼 동작 동안엔 나머지 버튼은 동작 멈추게 하기
+        function moveAuto() {
+            if(flag==true){
+                flag=false;
+                window.clearInterval(timer);
+                document.getElementById("btn").innerHTML='▶'; 
+                
+            }else{
+                flag=true;
+                document.getElementById("btn").innerHTML='■'; 
+                    timer=setInterval(function () {
+                        imgNum++;
+                        if(imgNum>7) imgNum=0;
+                        var dist=-600*imgNum;
+                        document.getElementById("imgs").style.left=dist+"px";
+                    }, 1000);
+                
+                }
+        }
+    </script>
+</head>
+<body>
+    <div id="view">
+        <div id="imgs">
+            <img src="images/Koala.jpg"><img src="images/Chrysanthemum.jpg"><img src="images/Desert.jpg"><img src="images/Hydrangeas.jpg"><img src="images/Jellyfish.jpg"><img src="images/Lighthouse.jpg"><img src="images/Penguins.jpg"><img src="images/Tulips.jpg">
+        </div>
+
+        <div id="remote">
+            <ul>
+                <li onclick="moveLeft();">◁</li>
+                <li onclick="move(0)">1</li>
+                <li onclick="move(1)">2</li>
+                <li onclick="move(2)">3</li>
+                <li onclick="move(3)">4</li>
+                <li onclick="move(4)">5</li>
+                <li onclick="move(5)">6</li>
+                <li onclick="move(6)">7</li>
+                <li onclick="move(7)">8</li>
+                <li onclick="moveRight();">▷</li>
+                <li id="btn" onclick="moveAuto();">▶</li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>

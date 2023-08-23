@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style></style>
+<!-- 
+        JavaScript(자바 스크립트)
+1.HTML5 언어로 마크업하며 만드는 웹페이지의 정적인 기능들을 확장하고 페이지를 조금 더 동적으로 만들기 위해 이용하는 프론트 개발 언어
+2. 주로 HTML5에서 불가능한 사칙연산 및 관계연산등을 실행할 때 사용하며, 기능적인 면이나 이벤트(클릭, 더블클릭 등)에 대한 동작을 처리하는데 사용됨
+3. 브라우져 및 화면에 표시될 태그들을 대상으로 하는 객체들이 정의되어 있으며, 자바의 객체지향 언어 형식의 프로그램이 작성됨
+4. 브라우져 상에서 일어날 수 있는 사용자 입력, 해당 연산, 이벤트에 의한 출력의 기능을 구현함 -->
+<script>
+	// 자바 스크립트 주석문은 자바의 주석문과 똑같음
+
+	/*
+	 여러줄 주석처리
+	 */
+
+	//한줄 주석 처리
+	// alert 간단한 경고 메세지를 화면에 출력함
+	// window.alert("Hello JavaScript");
+	// HTML파일 내 body 부분에 해당 내용을 출력함. 태그는 표시되지 않고 기능별로 동작하며 출력됨
+	// document.write("<h1>Hello JavaScript</h1>");
+	// window:크롬 또는 엣지 브라우져의 구성요소를 담고 정의된 개체
+	// document: 웹페이지의 body에 해당하는 영역의 구성요소를 담고 정의된 객체
+	// 둘 다 미리 만들어져서 활용가능한 상태의 객체
+	
+	//1.출력관련 명령
+	//   alert명령은 자바 스크립트 안에 내장된 window객체 안의 멤버 메서드
+	//   사용할 때 window.를 생략해 사용할 수도 있고, 생략하지 않아도됨
+	//   자바스크립트에서는 화면에 표시되는 윈도우를 window라는 이름으로 정의한 객체로 다루게끔 환경객체를 내장하고 있음
+	// 2.문자 자료형
+	// -자바 스크립트에도 자바와 마찬가지로 문자 또는 숫자형의 자료가 존재. 또한 그들을 저장해두고 사용할 수 있게 변수도 존재함. 아래는 문자형 자료의 설명
+	// -자바와 달리 자바스크립트의 문자 자료형은 작은 따옴표와 큰 따옴표를 모두 문자자료로 사용함(char와 String의 구분이 없음)
+	// -작은 따옴표, 큰따옴표 전부 문자자료로 인식. 다만 그 둘을 혼용해 사용할 수 는 없음("자바 스크립트'불가능)
+	// -둘을 혼용해 사용하는 경우는 문자열 자료안에 인용구문을 넣어야 할 때 혼용해서 사용함('Hello "JavaScript"...'바른 사용)
+	// -인용구문의 사용도 작은 따옴표와 큰따옴표의 구분은 없음('Hello "JavaScript"...'바른 사용, "Hello 'JavaScript'..." 바른사용)
+	// -큰따옴표나 작은 따옴표로만 인용구문 표기를 하고 싶다면 이스케이프 문자\를 사용함. ("Hello, \"JavaScript\"...")
+	// -이스케이프 문자들:\n, \`, \t, \\
+	// document.write('<h2>Hello, JavaScript ...<br>작은 따옴표</h2>');
+	// document.write("<h2>Hello, JavaScript ...<br>큰 따옴표</h2>");
+	// document.write("<h2>Hello, 'JavaScript' ...<br>혼합된 사용1</h2>");
+	// document.write('<h2>Hello, "JavaScript" ...<br>혼합된 사용2</h2>');
+	// document.write('<h2>Hello, \"JavaScript\" ...<br>이스케이프 문자 사용</h2>');
+	// document.write('<h2>Hello, \'JavaScript\' ...<br>작은 따옴표</h2>');
+	// 3. 숫자 자료형
+	// - JavaScript의 숫자자료는 정수와 실수만 구분하고, 이외의 요소들은 구분없이 사용함. 통틀어서 숫자자료라고 명칭함
+	// document.write("<h1>"+273+"</h1>");
+	// document.write("<h1>"+3.14+"</h1>");
+	// 4.산술 연산자:+,-,*,/,%
+	// -일반적인 산술연산자는 똑같이 사용됨. 다만, 정수와 정수끼리의 나눗셈연산이 정수결과가 나오는 것이 아니라 실수결과로 출력됨
+	// document.write<h1>27%35="+(27%35)+"</h1>");
+	// 5.비교 연산자:<,>,<=,>=,==,!=
+	// 6.논리 연산자:&&,||,!
+	// document.write("<h1> 27>35 && 45<78=>"+(27>35 &&45<78)+"</h1>");
+	// //27이 35보다 크면서, 45가 78보다 작다->false
+	// document.write("<h1> 27>35 || 45<78=>"+(27>35 ||45<78)+"</h1>");
+	// //27이 35보다 크거나, 45가 78보다 작다->true
+	// document.write("<h1> !(27>35) =>"+(!(27>35))+"</h1>");
+	//27은 35보다 크지 않다->true
+	// 7.변수
+	// 자바스크립트의 변수 선언
+	// var a=10; //a변수 생성 후 10 저장
+	// a='abcd';
+	// // 모든 변수는 var이라는 선언명령으로 생성
+	// // 변수의 자료형은 현재 저장되어 있는 자료형에 따라 바뀝니다
+	// // a변수에 10이라는 값을 저장해서 정수형 변수가 되어 있다가도, 이후에 123.123이라는 값을 a변수에 대입하면 실수형이됨
+	// a=123.123;
+	//변수는 1개이지만 자료형을 바꿔가며 재활용 가능
+	// var radius =10;//정수
+	// var pi=3.14//실수
+	// document.write("<h1>"+pi+"</h1>");
+	// document.write("<h1>"+pi*2*radius+"</h1>");
+	// document.write("<h1>"+(pi*2*radius).toFixed(2)+"</h1>");
+	// var varChar="Hello world"; //문자
+	// var booleanType=true; //boolean
+	// pi="Hello world"; //실수가 저장되었던 변수에 다시 문자 저장
+	// document.write("<h1>"+pi+"</h1>");
+	// document.write("<h1>"+pi*2*radius+"</h1>");//문자와 숫자 자료의 산술연산의 결과는 NaN
+
+	//자바 스크립트의 함수(자바의 메서드)
+	function abc() {
+		document.write("<h2>자바스크립트의 일반적인 함수임. 자바처럼 호출</h2>");
+	}
+	abc();
+	//한곳에서 선언(정의)과 호출이 모두 가능
+
+	// ★★★★자바 스크립트 변수의 특별한 기능★★★★
+	// 자바스크립트 변수는 함수도 저장가능함
+	// 자바스크립트는 평소 사용하는 함수가 자바의 스태틱 함수(메서드)이며 생성 후 자유롭게 호출해 사용. 또한 다음과 같이 만들어지는 함수를 변수에 담아서 사용하기도 함
+	var fv = function() {
+		document.write("함수를 변수에 저장했어요. 그리고 변수이름으로 호출합니다.<br>");
+	}//이름이 없는 삼수를 변수에 저장해 변수이름이 함수이름인 것 처럼 사용해 호출
+	fv();
+
+	//function(){} 이와같이 정의된 함수를 "익명함수"라고 하며, 이 익명함수는 스스로 호출이 되지 않아서 위와 같이 변수에 저장하고 변수이름으로 호출해야만 함.
+
+	//변수로 호출이 아니라, 변수의 내용을 출력하면 함수의 몸체(내용)이 출력됨
+	// document.write('<h2>'+fv+'</h2>');
+
+	// 8. 복합 대입 연산자:+=, -=, *=, /=, %=
+	// var value=10;
+	// value +=10; //value = value+10;
+	// document.write("<h2>"+value+"</h2>");
+	// value -='world';
+	// document.write("<h2>"+value+"</h2>");//NaN(Not a Number)
+
+	//9.증감 연산자
+	// var number=10;
+	// document.write(++number+5+"<br>");//number값 10에서 11로 변경 후 +5 연산 실행
+	// document.write(--number+5+"<br>");//number값 11에서 10로 변경 후 +5 연산 실행
+	// document.write(number++ +5+"<br>");//number값 10에서 +5 연산실행 후 10에서 11로 변경
+	// document.write(number-- +5+"<br>");//number값 10에서 +5 연산실행 후 11에서 10로 변경
+
+	// 10. 변수의 특징과 변수들간의 연산
+	// 변수는 가장 마지막에 대입한 값을 기억함
+	// 문자들간의 +연산은 이어붙이기 연산
+	// 문자와 숫자간의 +연산도 이어붙이기 연산이 되어 최종 문자결과가 만들어짐
+
+	// var cup='Coffee';
+	// cup='Green Tea';
+	// cup='Water';
+	// document.write('<h2>Drink'+cup+'...!!!</h2>');
+	// var number=10;
+	// document.write('<h2>숫자 값: '+number+'</h2>');
+	// var num=1234+""; //num변수에는 숫자 1234가 아닌 "1234"가 저장됨
+
+	// 11. 자료형 검사
+	// 문자열
+	// document.write('<h2>"홍길동":' +typeof("홍길동")+"</h2>");
+	// // 숫자
+	// document.write('<h2>1234:' +typeof(1234)+"</h2>");
+	// document.write('<h2>1234.12:' +typeof(1234.12)+"</h2>");
+	// //boolean
+	// document.write('<h2>true:' +typeof(true)+"</h2>");
+	// //함수
+	// document.write('<h2>function:' +typeof(function(){})+"</h2>");
+
+	//자바 스크립트 객체 생성
+	// var objectVar={a:10, b:20};
+	// //객체변수 objectVar에 객체를 저장 ->그 객체 안에는 a와 b라는 멤버변수가 존재
+	// //각 멤버변수의 값은 a-10, b-20을 저장함
+
+	// document.write("<h2>{a:10,b:20} : "+typeof({a:10, b:20})+"</h2>");
+	// document.write("<h2>{a:10,b:20} : "+typeof(objectVar)+"</h2>");
+
+	// document.write("<h2>objectVar.a:"+objectVar.a+"</h2>");
+	// document.write("<h2>objectVar.b:"+objectVar.b+"</h2>");
+	// document.write("<h2>objectVar:"+objectVar.toString()+"</h2>");
+
+	//자바 스크립트 변수의 특징 두번째(첫번째: 함수저장 가능)
+	//변수의 선언없이도 변수의 사용이 가능함
+	// number=100;
+	// document.write("<h2>number 변수 값:"+number+"</h2>");
+
+	// //다만 값이 초기화되지 않으면 생성하지 않은 변수의 값은 사용할 수 없으며 자료형은 Undefined가 됨
+	// document.write("<h2>number2 변수 타입:"+typeof(number2)+"</h2>");
+
+	// 12.입력
+	// var input=prompt('이름을 입력하세요.', '두글자 이상 입력');
+	// //'이름을 입력하세요.' : 안내 텍스트
+	// //'두 글자 이상 입력' : 입력란에 미리 쓰여있게 될 기본값
+	// //prompt로 입력받은 모든 내용은 자료형이 string이기 때문에 숫자를 입력받아서 사용하려면 아래와 같이 형변환이 필요함
+	// var num=Number(input); //형변환 string->number
+	// document.write("<h2>input: "+typeof(input)+"</h2>");
+	// document.write("<h2>num: "+typeof(num)+"</h2>");
+
+	//boolean 입력받을 때 사용하는 함수
+	// var bool=confirm('수락하시겠습니까?');
+	// //confirm에서 대답한 버튼'확인'=true, '취소'=false로 전달
+	// if(bool){
+	//     document.write('수락하셨군요. 제대로 모시겠습니다.');
+	// }else{
+	//     document.write('거절하셨군요. 미워요');
+	// }
+
+	//국어 영어 수학점수를 입력받고, 총점 평균을 출력하도록 자바스크립트 명령을 구성(입력받은 점수, 총점, 평균을 세줄에 걸쳐 출력) prompt로 입력 후 형변환&연산&출력
+
+	// var input=prompt('국어','100');
+	// var kor=Number(input);
+	// var input=prompt('영어','100');
+	// var eng=Number(input);
+	// var input=prompt('수학','100');
+	// var mat=Number(input);
+
+	// var tot=kor+eng+mat;
+	// var avg=tot/3;
+
+	// document.write("국어:"+kor+"영어:"+eng+"수학:"+mat+"<br>");
+	// document.write("총점:"+tot+"<br>");
+	// document.write("평균:"+avg+"<br>");
+</script>
+</head>
+<body>
+
+	<!-- body태그 안의 스크립트 :  주로 head안의 함수를 호출하거나 직접 실행명령을 씀.
+    함수 및 실행명령의 실행시점: 페이지 시작 시점 또는 이벤트(마우스 동작) 발행시점-->
+	<script type="text/javascript">
+		//1.출력관련 명령
+		window.alert("Hello, JavaScript #2");
+		document.write("<h1>Hello JavaScript #2</h1>"); //실행시점을 조절할 수 있는 구문
+		//자바 스크립트에서는 body영역을 document라는 객체로 정의하고 제어할 수 있게 환경을 제공
+
+		//보통은 head 태그 안의 스크립트 영역에 함수를 정의하고 body의 스크립트 영역에서 호출하는 형식을 많이 사용함.
+		abc();
+		fv();
+	</script>
+	<br>
+	<input type="button" onclick="abc();" value="CLICK">
+</body>
+</html>

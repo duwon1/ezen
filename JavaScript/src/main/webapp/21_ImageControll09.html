@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>21_ImageControll09.html</title>
+    <style type="text/css">
+        #view{position: relative; width: 170px; height: 255px; border: 3px solid blue; left: 100px; }
+        .imgs{position: absolute; top: 0; left: 0; opacity: 0;transition: 3s;}
+        .imgs:first-child{opacity: 1;}
+    </style>
+    <script type="text/javaScript">
+        var imgNum = 1; 
+        var timer;
+        function stop() {
+            window.clearInterval(timer);
+        }
+        function play() {
+            
+        timer=    window.setInterval(function () {
+                
+            for(var i=1; i<=5; i++)
+                document.getElementById("imgs"+i).style.opacity='0';
+                //현재 화면에 보여야할 이미지가 나오기 전에, 모든 이미지 투명으로 바꾸기
+                imgNum++;
+                if (imgNum>5) imgNum=1;
+                var id= "imgs"+imgNum;
+                document.getElementById(id).style.opacity='1';
+            }, 2000);
+        }
+    </script>
+</head>
+<body onload="play();">
+    <div id="view" onmouseover="stop();" onmouseout="play();">
+        <div class="imgs" id="imgs1"><img src="images/1.jpg"></div>
+        <div class="imgs" id="imgs2"><img src="images/2.jpg"></div>
+        <div class="imgs" id="imgs3"><img src="images/3.jpg"></div>
+        <div class="imgs" id="imgs4"><img src="images/4.jpg"></div>
+        <div class="imgs" id="imgs5"><img src="images/5.jpg"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판 상세보기</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/board.css">
+    <style>
+        #time,
+        #writer,
+        #remove,
+        h1,
+        th,
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <h1>게시글 내용</h1>
+        <table>
+            <tr>
+                <th width="150">번호</th>
+                <td width="200">{{board.id}}<input type="hidden" id="boardnum" value="{{board.id}}" /></td>
+                <th width="150">작성자</th>
+                <td width="200">{{board.writer}}</td>
+            </tr>
+            <tr>
+                <th>작성일</th>
+                <td>{{board.created_at | date("YYYY/MM/DD")}}</td>
+                <th>조회수</th>
+                <td>{{board.readCount}}</td>
+            </tr>
+            <tr>
+                <th width="150">제목</th>
+                <td colspan="3">&nbsp;{{board.subject}}</td>
+            </tr>
+            <tr height="300">
+                <th width="150">내용</th>
+                <td colspan="2" height="300" width="300" style="text-align:left;">
+                    <pre>{{board.content}}</pre><br />
+                </td>
+                <td width="150">
+                    {% if board.filename %}
+                    <img src="/upload/{{board.realfilename}}" width="150" />
+                    {% endif %}
+                </td>
+            </tr>
+            <tr height="50">
+                <td colspan="4">
+                    <input type="button" value="수정" onclick="location.href='/boards/updateForm/{{board.id}}'" />
+                    <input type="button" value="삭제" onclick="location.href='/boards/deleteBoard/{{board.id}}'" />
+                    <input type="button" value="돌아가기" onclick="location.href='/boards'" />
+                </td>
+            </tr>
+        </table>
+        <br /><br />
+
+        <form id="reply-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="140">작성일시</th>
+                        <th width="90">작성자</th>
+                        <th width="400">내용</th>
+                        <th width="70">&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td>{{nowDate | date("MM/DD HH:mm")}}</td>
+                        <td>
+                            {{loginUser.userid}}<input type="hidden" id="writer" value="{{loginUser.userid}}" />
+                            <input type="hidden" id="boardnum" value="{{board.id}}" />
+                        </td>
+                        <td>&nbsp;<input type="text" size="50" id="reply" /></td>
+                        <td><input type="submit" value="작성" /></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <script type="text/javascript">
+        getReplys(`{{board.id}}`, `{{loginUser.userid}}`);
+
+        async function getReplys(boardnum, loginUserId) {
+            try {
+                const result = await axios.get(`/boards/replyList/${boardnum}`);
+                const replys = result.data;
+
+                const tbody = document.querySelector(`#reply-list tbody`);
+                tbody.innerHTML = ``;
+
+                replys.map((reply) => {
+                    const row = document.createElement(`tr`);
+
+                    let td = document.createElement(`td`);
+                    td.textContent = reply.created_at.substring(5, 7) + `/` + reply.created_at.substring(8, 10) + ` ` + reply.created_at.substring(11, 13) + `:` + reply.created_at.substring(14, 16);
+                    td.id = `time`;
+                    row.appendChild(td);
+
+                    td = document.createElement(`td`);
+                    td.textContent = reply.writer;
+                    td.id = `writer`;
+                    row.appendChild(td);
+
+                    td = document.createElement(`td`);
+                    td.textContent = reply.content;
+                    td.id = `content`;
+                    row.appendChild(td);
+
+                    const remove1 = document.createElement(`input`);
+                    remove1.setAttribute(`type`, `button`);
+                    remove1.value = `삭제`;
+                    td = document.createElement(`td`);
+                    td.id = `remove`;
+
+                    remove1.addEventListener(`click`, async(e)=> {
+                        try {
+                            await axios.delete(`/boards/deleteReply/${reply.id}`)
+                            location.reload();
+                        } catch (e) {
+                            console.error(e);
+                        }
+                    })
+
+
+                    if (reply.writer === loginUserId) {
+                        td.appendChild(remove1);
+                    } else {
+                        td.innerHTML = `&nbsp;`;
+                    }
+                    row.appendChild(td);
+
+                    tbody.appendChild(row);
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        document.getElementById('reply-list').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            // form 에 있는 writer, boardnum, reply 를 가지고 댓글을 replys 테이블에 추가하고, getReplys 함수를 호출하세요
+            const reply = e.target.reply.value
+            const writer = e.target.writer.value
+            const boardnum = e.target.boardnum.value
+
+            if (!reply || !writer || !boardnum) {
+                return alert('모든 필드를 채워주세요')
+            }
+
+            try {
+                const result = await axios.post('/boards/insertReply', {
+                    reply,
+                    writer,
+                    boardnum,
+                })
+                location.reload()
+            } catch (err) {
+                console.error(err)
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>

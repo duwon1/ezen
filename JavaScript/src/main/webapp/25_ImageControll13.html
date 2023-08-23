@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>25_ImageControll13.html</title>
+    <style type="text/css">
+        #view{position: relative; width: 600px; height: 400px; margin: 0 auto; border: 2px solid blue; overflow: hidden;}
+        #imgs{position: absolute; width: 4800px; height: 400px; left: 0; top: 0; border: 1px dashed red; transition: 0.3s;}
+        img{width: 600px; height: 400px;}
+
+        #remote{position: relative; width: 200px; height: 50px; border: 1px solid white; margin: 0 auto; top: 350px; text-align: center;}
+        ul{list-style-type: none; margin: 0; padding: 0; display: inline-block;}
+        li{float: left; width: 25px; height: 25px; background-color: white;border-radius: 50%; margin: 13px 5px; line-height: 25px; text-align: center; cursor: pointer;}
+        
+    </style>
+    <script type="text/javaScript">
+        var imgNum=0;
+        var timer;
+        function start() {
+            timer=setInterval(function () {
+                imgNum++;
+                if(imgNum>7) imgNum=0;
+                var dist=-600*imgNum;
+                document.getElementById("imgs").style.left=dist+"px";
+                
+            }, 1000);
+        }
+        function stop() {
+            window.clearInterval(timer);
+        }
+    </script>
+</head>
+<body onload="start();">
+    <div id="view">
+        <div id="imgs">
+            <img src="images/Koala.jpg"><img src="images/Chrysanthemum.jpg"><img src="images/Desert.jpg"><img src="images/Hydrangeas.jpg"><img src="images/Jellyfish.jpg"><img src="images/Lighthouse.jpg"><img src="images/Penguins.jpg"><img src="images/Tulips.jpg">
+        </div>
+        
+    <div id="remote">
+        <ul>
+            <li onclick="start()">▶</li>
+            <li onclick="stop()">■</li>
+        </ul>
+    </div>
+</body>
+</html>

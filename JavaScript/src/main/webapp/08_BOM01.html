@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javaScript">
+        // 브라우저 객체 모델(BOM: Browser Object Model)
+        // -웹브라우저를 대상으로 하여 외관으로 보이는 외형이나 내부에 저장된 각종 속성들을 조정하고 싶다면 자바 스크립트가 제공하는 그에 관련된 객체들을 이용해 조정하고 컨트롤함
+        // -자바스크립트에서 윈도우나 웹 브라우져등을 객체로 정의해서 그 안에 여러 구성요소들을 멤버변수나 멤버 메서드로 접근하고 조정할 수 있게 각종 객체를 제공함
+        // BOM이란 자바스크립트 내에 내장되어 있는 웹브러우저와 관련된 객체들의 집합을 의미함
+        // window, screen, location, navigator, history등
+
+        //1.window 객체
+        // -브라우저 기반 자바스크립트의 최상위 객체
+        // -alert(), prompt(), comfirm() 함수 모두 window 객체의 함수임
+        // -원래의 사용은 window.alert() window.prompt()라고 써야하지만 편의상 window.생략
+
+        // window 중 사용빈도수가 높은 메서드 중 대표적 : window.open() 팝업창 생성 메서드
+        // 명령형식 : window.open(팝업창에 표시될 페이지/주소, 팝업창 이름, 옵션)
+        // 팝업창에 표시될 페이지이름(경로포함) 또는 사이트의 주소: '04_Loop.html', 'https://www.naver.com'
+        // 팝업창의 이름: 스크립트 내부에서 팝업창끼리 구분할 이름 -'child'같은 별칭
+        // 옵션: 'width=600, height=480' 과 같은 팝업창의 속성들. 가로세로 크기 등. " "또는 ' '안에 여러 요소를 (,)컴마로 구분해 설정하고자 하는 요소를 모두 넣음.
+        var child = window.open('https://www.naver.com', 'child1', 'width=600, height=480, left=100, top=100' );
+        //child변수 : 열린 팝업창을 제어할 레퍼런스 변수를 만들고 팝업창의 제어권(주소)를 저장함
+
+        // window.setInterval():일정 시간 간격으로 지정한 동작 또는 함수를 호출 실행함.
+        //window.setInterval(동작을 담고 있는 익명함수 또는 선언적함수 이름, 시간간격);
+        //시간간격: 1000->1초
+        // 사용예) window.setInterval(function(){child,moveBy(50,50)}, 1000);
+
+        // 작성순서
+        //1. window.setInterval(function(){}, 1000);
+        //2. window.setInterval(funtion(){//익명함수 중괄호 가운데서 엔터 ->함수내용 기술
+                                            //함수의 내용
+                                        // } , 1000);
+        // window.setInterval(function() {child.moveBy(50,50)}, 1000);
+
+        var output='';
+        for(var key in window){//hashMap의 key값을 객체에 적용해 반복실행
+            output+= '<h2>'+key+':'+window[key]+'</h2>';
+        }//객체 안의 모든 멤버 변수(key)가 담고 있는 값(window[key])들을 모두 출력할 때 이와 같은 반복실행을 사용함
+        //키값:key
+        //밸류값:window[key]
+        document.write(output);
+
+</script>
+</head>
+<body>
+    
+</body>
+</html>
